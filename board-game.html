@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Game Digital — RambuKidz</title>
+<meta name="description" content="Papan permainan fisik terhubung ke tantangan digital — media inovatif non-IT + IT yang mendorong kolaborasi dan berpikir kritis siswa Kelas IV SD.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kuning:#FFD600; --kuning-dark:#C9A800;
+  --biru:#1B3A6B; --biru-mid:#2A5298;
+  --hijau:#00C896; --hijau-dark:#009E78;
+  --oranye:#FF6B35; --oranye-dark:#CC4A1A;
+  --merah:#E53E3E;
+  --putih:#F7F9FF; --putih-pure:#FFFFFF;
+  --aspal:#1A1A2E; --abu:#E8EBF4; --abu-dark:#C5CAD9;
+  --font-display:'Nunito',sans-serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px; --r-md:12px; --r-lg:20px; --r-xl:32px;
+  --ease:all 0.25s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--putih);color:var(--aspal);overflow-x:hidden;}
+h1,h2,h3,h4{font-family:var(--font-display);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(204,74,26,.97);backdrop-filter:blur(12px);padding:14px 5%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-text{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:#fff;}
+.nav-back{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:500;transition:var(--ease);border:1px solid rgba(255,255,255,.3);padding:7px 16px;border-radius:100px;}
+.nav-back:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.1);}
+
+/* HERO */
+.hero{min-height:60vh;background:linear-gradient(135deg,#7A1F00 0%,var(--oranye-dark) 40%,var(--oranye) 100%);position:relative;overflow:hidden;display:flex;align-items:center;padding:120px 5% 80px;gap:60px;}
+.hero-text{position:relative;z-index:2;max-width:580px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:20px;}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero h1 span{color:var(--kuning);}
+.hero-sub{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.7;margin-bottom:32px;max-width:480px;}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--kuning);}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.55);font-weight:500;margin-top:2px;}
+
+/* BOARD PREVIEW */
+.board-preview{position:relative;z-index:2;flex-shrink:0;}
+
+/* SECTIONS */
+section{padding:72px 5%;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--oranye-dark);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;}
+.eyebrow::before{content:'';display:block;width:18px;height:3px;background:var(--oranye);border-radius:2px;}
+.tc{text-align:center;} .mx{max-width:640px;margin-left:auto;margin-right:auto;}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.2;}
+
+/* CARA MAIN */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:44px;counter-reset:step;}
+.how-card{background:var(--putih-pure);border-radius:var(--r-lg);padding:28px 22px;border:2px solid var(--abu);position:relative;transition:var(--ease);counter-increment:step;}
+.how-card::before{content:counter(step);position:absolute;top:20px;right:20px;font-family:var(--font-display);font-size:3rem;font-weight:900;color:rgba(255,107,53,.1);line-height:1;}
+.how-card:hover{border-color:var(--oranye);box-shadow:0 10px 36px rgba(255,107,53,.12);transform:translateY(-4px);}
+.how-icon{font-size:2.2rem;margin-bottom:14px;}
+.how-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.how-card p{font-size:.86rem;color:#5A6B8A;line-height:1.6;}
+
+/* BOARD GAME SIMULATOR */
+.game-section{background:var(--aspal);}
+.game-wrapper{max-width:900px;margin:44px auto 0;}
+.game-header{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;}
+.game-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:#fff;}
+.game-info{display:flex;gap:20px;}
+.game-stat{text-align:center;}
+.game-stat-num{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:var(--kuning);}
+.game-stat-label{font-size:.7rem;color:rgba(255,255,255,.4);font-weight:500;}
+
+/* BOARD */
+.board-container{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-top:none;padding:28px;}
+.board{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:28px;}
+.cell{aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:.8rem;cursor:pointer;transition:var(--ease);position:relative;border:2px solid transparent;}
+.cell-num{font-size:.7rem;color:rgba(255,255,255,.3);position:absolute;top:4px;left:6px;}
+.cell.empty{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06);}
+.cell.normal{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
+.cell.normal:hover{background:rgba(255,107,53,.15);border-color:var(--oranye);}
+.cell.soal{background:rgba(255,214,0,.1);border-color:rgba(255,214,0,.25);color:var(--kuning);}
+.cell.soal:hover{background:rgba(255,214,0,.2);}
+.cell.bonus{background:rgba(0,200,150,.1);border-color:rgba(0,200,150,.25);color:var(--hijau);}
+.cell.bonus:hover{background:rgba(0,200,150,.18);}
+.cell.trap{background:rgba(229,62,62,.1);border-color:rgba(229,62,62,.2);color:#FF9999;}
+.cell.trap:hover{background:rgba(229,62,62,.18);}
+.cell.start{background:rgba(42,82,152,.3);border-color:var(--biru-mid);color:#fff;}
+.cell.finish{background:linear-gradient(135deg,rgba(255,214,0,.2),rgba(255,107,53,.2));border-color:var(--kuning);color:var(--kuning);}
+.cell.active{box-shadow:0 0 0 3px var(--kuning),0 0 20px rgba(255,214,0,.4);transform:scale(1.08);z-index:10;}
+.cell-icon{font-size:1.2rem;margin-bottom:2px;}
+.pion{position:absolute;width:22px;height:22px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;top:2px;right:2px;z-index:5;}
+
+/* CONTROLS */
+.game-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.dice-btn{padding:14px 28px;background:var(--oranye);color:#fff;border:none;border-radius:100px;font-family:var(--font-display);font-weight:800;font-size:1rem;cursor:pointer;transition:var(--ease);display:inline-flex;align-items:center;gap:10px;}
+.dice-btn:hover:not(:disabled){background:var(--oranye-dark);transform:translateY(-2px);}
+.dice-btn:disabled{opacity:.5;cursor:not-allowed;}
+.dice-result{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--kuning);width:60px;text-align:center;}
+.player-turn{font-size:.88rem;color:rgba(255,255,255,.5);font-weight:500;}
+.game-log{background:rgba(0,0,0,.3);border-radius:var(--r-md);padding:16px;max-height:100px;overflow-y:auto;font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6;}
+.log-item{margin-bottom:4px;}
+.log-item.highlight{color:var(--kuning);}
+
+/* TANTANGAN MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,26,46,.8);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:#fff;border-radius:var(--r-xl);padding:36px;max-width:500px;width:100%;transform:scale(.9);transition:transform .3s cubic-bezier(.4,0,.2,1);text-align:center;}
+.modal-overlay.open .modal{transform:scale(1);}
+.modal-type-badge{display:inline-block;padding:5px 16px;border-radius:100px;font-size:.78rem;font-weight:700;margin-bottom:16px;}
+.modal h3{font-size:1.3rem;font-weight:900;margin-bottom:12px;}
+.modal-svg{margin:16px auto;display:flex;justify-content:center;}
+.modal-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;}
+.modal-opt{padding:12px 10px;border-radius:var(--r-md);border:2px solid var(--abu);background:#fff;font-family:var(--font-body);font-size:.86rem;font-weight:600;cursor:pointer;transition:var(--ease);color:var(--aspal);}
+.modal-opt:hover{border-color:var(--oranye);color:var(--oranye);}
+.modal-opt.correct{background:rgba(0,200,150,.12);border-color:var(--hijau);color:var(--hijau-dark);}
+.modal-opt.wrong{background:rgba(229,62,62,.08);border-color:var(--merah);color:#C53030;}
+.modal-fb{font-size:.88rem;font-weight:600;min-height:36px;padding:8px;}
+.modal-next{margin-top:16px;padding:12px 28px;background:var(--oranye);color:#fff;border:none;border-radius:100px;font-family:var(--font-body);font-weight:700;cursor:pointer;transition:var(--ease);display:none;}
+.modal-next:hover{background:var(--oranye-dark);}
+.modal-bonus{background:rgba(0,200,150,.06);border:1px solid rgba(0,200,150,.2);border-radius:var(--r-lg);padding:20px;text-align:center;}
+.modal-trap{background:rgba(229,62,62,.06);border:1px solid rgba(229,62,62,.2);border-radius:var(--r-lg);padding:20px;text-align:center;}
+
+/* FITUR */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;}
+.feat-card{border-radius:var(--r-lg);padding:28px;background:var(--putih-pure);border:2px solid var(--abu);transition:var(--ease);}
+.feat-card:hover{border-color:var(--oranye);box-shadow:0 8px 28px rgba(255,107,53,.1);}
+.feat-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.feat-card p{font-size:.86rem;color:#5A6B8A;line-height:1.6;}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:var(--ease);}
+.btn-primary{background:var(--oranye);color:#fff;}
+.btn-primary:hover{background:var(--oranye-dark);transform:translateY(-2px);}
+.center{display:flex;justify-content:center;margin-top:36px;gap:14px;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:32px 5%;text-align:center;font-size:.85rem;}
+footer a{color:var(--oranye);text-decoration:none;}
+
+@media(max-width:768px){
+  .hero{flex-direction:column;min-height:auto;padding-bottom:60px;}
+  .feat-grid{grid-template-columns:1fr;}
+  .board{grid-template-columns:repeat(5,1fr);}
+  .modal-opts{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="9" fill="rgba(255,255,255,.15)"/>
+      <rect x="7" y="12" width="22" height="15" rx="3" fill="rgba(255,255,255,.2)"/>
+      <rect x="10" y="15" width="16" height="9" rx="2" fill="white" fill-opacity=".9"/>
+      <path d="M18 17.5L22 20L18 22.5" stroke="#FF6B35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="nav-logo-text">RambuKidz</span>
+  </a>
+  <a href="index.html" class="nav-back">← Kembali ke Beranda</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">🎲 Pilar 3 — Media Inovatif</div>
+    <h1>Board Game <span>Digital</span></h1>
+    <p class="hero-sub">Papan permainan fisik yang terhubung ke tantangan digital interaktif — perpaduan unik media non-IT dan IT yang mendorong kolaborasi dan berpikir kritis.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">24</div><div class="stat-label">Kotak Permainan</div></div>
+      <div class="stat"><div class="stat-num">2-4</div><div class="stat-label">Pemain</div></div>
+      <div class="stat"><div class="stat-num">HOTS</div><div class="stat-label">Level C4–C6</div></div>
+    </div>
+  </div>
+  <!-- SVG Board Preview -->
+  <div class="board-preview">
+    <svg width="280" height="220" viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="272" height="212" rx="16" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+      <!-- Cells row 1 -->
+      <rect x="16" y="16" width="36" height="36" rx="6" fill="rgba(42,82,152,.5)"/><text x="34" y="40" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="13" fill="white">▶</text>
+      <rect x="56" y="16" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/><text x="74" y="38" text-anchor="middle" font-family="Nunito" font-size="18" fill="rgba(255,255,255,.5)">•</text>
+      <rect x="96" y="16" width="36" height="36" rx="6" fill="rgba(255,214,0,.15)"/><text x="114" y="36" text-anchor="middle" font-size="14">❓</text>
+      <rect x="136" y="16" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <rect x="176" y="16" width="36" height="36" rx="6" fill="rgba(0,200,150,.15)"/><text x="194" y="36" text-anchor="middle" font-size="14">⭐</text>
+      <rect x="216" y="16" width="36" height="36" rx="6" fill="rgba(229,62,62,.15)"/><text x="234" y="36" text-anchor="middle" font-size="14">💀</text>
+      <!-- Row 2 -->
+      <rect x="216" y="56" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <!-- Row 3 -->
+      <rect x="16" y="56" width="36" height="36" rx="6" fill="rgba(229,62,62,.12)"/><text x="34" y="76" text-anchor="middle" font-size="14">💀</text>
+      <rect x="56" y="56" width="36" height="36" rx="6" fill="rgba(255,214,0,.12)"/><text x="74" y="76" text-anchor="middle" font-size="14">❓</text>
+      <rect x="96" y="56" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <rect x="136" y="56" width="36" height="36" rx="6" fill="rgba(0,200,150,.12)"/><text x="154" y="76" text-anchor="middle" font-size="14">⭐</text>
+      <rect x="176" y="56" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <!-- Row 4 -->
+      <rect x="16" y="96" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <rect x="216" y="96" width="36" height="36" rx="6" fill="rgba(255,214,0,.15)"/><text x="234" y="116" text-anchor="middle" font-size="14">❓</text>
+      <!-- Row 5 -->
+      <rect x="16" y="136" width="36" height="36" rx="6" fill="rgba(0,200,150,.12)"/><text x="34" y="156" text-anchor="middle" font-size="14">⭐</text>
+      <rect x="56" y="136" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <rect x="96" y="136" width="36" height="36" rx="6" fill="rgba(255,214,0,.12)"/><text x="114" y="156" text-anchor="middle" font-size="14">❓</text>
+      <rect x="136" y="136" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <rect x="176" y="136" width="36" height="36" rx="6" fill="rgba(229,62,62,.12)"/><text x="194" y="156" text-anchor="middle" font-size="14">💀</text>
+      <rect x="216" y="136" width="36" height="36" rx="6" fill="rgba(255,255,255,.08)"/>
+      <!-- Row 6 -->
+      <rect x="216" y="176" width="36" height="36" rx="6" fill="linear-gradient(135deg,rgba(255,214,0,.3),rgba(255,107,53,.3))"/>
+      <rect x="216" y="176" width="36" height="36" rx="6" fill="rgba(255,214,0,.25)"/><text x="234" y="198" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="10" fill="#FFD600">FINISH</text>
+      <!-- Pion -->
+      <circle cx="34" cy="34" r="10" fill="#FF6B35" stroke="white" stroke-width="2"/>
+      <text x="34" y="38" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="9" fill="white">A</text>
+      <circle cx="74" cy="74" r="10" fill="#2A5298" stroke="white" stroke-width="2"/>
+      <text x="74" y="78" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="9" fill="white">B</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CARA BERMAIN -->
+<section style="background:var(--putih);padding:72px 5%;">
+  <div class="tc mx">
+    <div class="eyebrow">Cara Bermain</div>
+    <h2>5 Langkah Mudah<br>Mulai Board Game</h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-icon">🎲</div>
+      <h3>Lempar Dadu</h3>
+      <p>Klik tombol "Lempar Dadu" untuk mendapatkan angka 1–6. Kamu akan melangkah maju sejumlah angka yang muncul.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">❓</div>
+      <h3>Jawab Tantangan</h3>
+      <p>Berhenti di kotak ❓ artinya kamu mendapat soal rambu! Jawab dengan benar untuk melanjutkan tanpa penalti.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">⭐</div>
+      <h3>Raih Bonus</h3>
+      <p>Kotak ⭐ adalah kotak Bonus! Kamu bisa maju 2 kotak ekstra atau mendapat poin tambahan.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">💀</div>
+      <h3>Hindari Jebakan</h3>
+      <p>Kotak 💀 adalah kotak jebakan — kamu mundur 2 kotak. Hati-hati strategimu agar tidak terjebak!</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🏁</div>
+      <h3>Capai Finish</h3>
+      <p>Pemain pertama yang mencapai kotak FINISH dinyatakan menang! Kumpulkan poin sebanyak mungkin di perjalanan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GAME SIMULATOR -->
+<section class="game-section" style="padding:72px 5%;">
+  <div class="tc mx" style="color:#fff;">
+    <div class="eyebrow" style="color:rgba(255,107,53,.8);">
+      <span style="display:block;width:18px;height:3px;background:var(--oranye);border-radius:2px;"></span>
+      Demo Interaktif
+    </div>
+    <h2 style="color:#fff;">Coba Board Game<br>Sekarang! 🎲</h2>
+    <p style="color:rgba(255,255,255,.55);margin-top:14px;">Simulasi 2 pemain — kamu melawan AI sederhana!</p>
+  </div>
+  <div class="game-wrapper">
+    <div class="game-header">
+      <div class="game-title">🎲 RambuKidz Board Game</div>
+      <div class="game-info">
+        <div class="game-stat"><div class="game-stat-num" id="scoreA">0</div><div class="game-stat-label">🔴 Kamu</div></div>
+        <div class="game-stat"><div class="game-stat-num" id="scoreB">0</div><div class="game-stat-label">🔵 AI</div></div>
+        <div class="game-stat"><div class="game-stat-num" id="roundNum">1</div><div class="game-stat-label">Giliran</div></div>
+      </div>
+    </div>
+    <div class="board-container">
+      <div class="board" id="gameBoard"></div>
+      <div class="game-controls">
+        <button class="dice-btn" id="diceBtn" onclick="rollDice()">🎲 Lempar Dadu</button>
+        <div class="dice-result" id="diceResult">—</div>
+        <div class="player-turn" id="playerTurn">Giliran: 🔴 Kamu</div>
+      </div>
+      <div class="game-log" id="gameLog">
+        <div class="log-item highlight">🎮 Game dimulai! Giliran Kamu pertama.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TANTANGAN MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalBox">
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- FITUR UNGGULAN -->
+<section style="background:var(--putih);padding:72px 5%;">
+  <div class="tc mx">
+    <div class="eyebrow">Keunggulan Media</div>
+    <h2>Mengapa Board Game<br>+ Digital?</h2>
+    <p style="margin-top:14px;color:#5A6B8A;font-size:.95rem;">Perpaduan media fisik dan digital menciptakan pengalaman belajar yang jauh lebih kaya dan berkesan.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <h3>🤝 Mendorong Kolaborasi</h3>
+      <p>Bermain bersama melatih siswa berkomunikasi, bernegosiasi, dan bekerja sama — keterampilan abad 21 yang sangat penting.</p>
+    </div>
+    <div class="feat-card">
+      <h3>🧠 Stimulasi HOTS</h3>
+      <p>Soal-soal tantangan di kotak ❓ dirancang dengan level Bloom C4 (Analisis) hingga C6 (Kreasi) untuk melatih berpikir tingkat tinggi.</p>
+    </div>
+    <div class="feat-card">
+      <h3>📱 Non-IT + IT</h3>
+      <p>Papan fisik yang nyata dikombinasikan dengan layar digital menciptakan pengalaman multisensori yang lebih efektif untuk memori jangka panjang.</p>
+    </div>
+    <div class="feat-card">
+      <h3>🏆 Kompetitif & Menyenangkan</h3>
+      <p>Elemen kompetisi yang sehat, sistem poin, dan kejutan di setiap kotak membuat siswa tetap termotivasi dan engaged sepanjang pembelajaran.</p>
+    </div>
+  </div>
+  <div class="center">
+    <a href="index.html#kuis" class="btn btn-primary">🎯 Coba Kuis Rambu</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 RambuKidz — <a href="index.html">Kembali ke Beranda</a> · LIDM 2026 Divisi Microteaching Digital</p>
+</footer>
+
+<script>
+// ====== BOARD SETUP ======
+const CELLS = 24;
+const cellTypes = [
+  'start','normal','soal','normal','bonus','normal',
+  'trap','soal','normal','normal','soal','normal',
+  'bonus','normal','soal','trap','normal','soal',
+  'normal','bonus','soal','normal','trap','finish'
+];
+const cellLabels = {start:'▶ START',normal:'',soal:'❓',bonus:'⭐',trap:'💀',finish:'🏁 FINISH'};
+
+let posA = 0, posB = 0, scoreA = 0, scoreB = 0, turn = 'A', round = 1, gameOver = false, diceActive = true;
+
+function buildBoard() {
+  const board = document.getElementById('gameBoard');
+  board.innerHTML = '';
+  for (let i = 0; i < CELLS; i++) {
+    const cell = document.createElement('div');
+    const type = cellTypes[i] || 'normal';
+    cell.className = `cell ${type}`;
+    cell.id = `cell-${i}`;
+    const numEl = document.createElement('div');
+    numEl.className = 'cell-num';
+    numEl.textContent = i + 1;
+    cell.appendChild(numEl);
+    const iconEl = document.createElement('div');
+    iconEl.className = 'cell-icon';
+    iconEl.textContent = cellLabels[type] || '';
+    cell.appendChild(iconEl);
+    board.appendChild(cell);
+  }
+  updatePions();
+}
+
+function updatePions() {
+  document.querySelectorAll('.pion').forEach(p => p.remove());
+  const cellA = document.getElementById(`cell-${posA}`);
+  if (cellA) {
+    const pion = document.createElement('div');
+    pion.className = 'pion';
+    pion.style.background = '#FF6B35';
+    pion.textContent = 'A';
+    cellA.appendChild(pion);
+    cellA.classList.add('active');
+  }
+  const cellB = document.getElementById(`cell-${posB}`);
+  if (cellB && posB !== posA) {
+    const pion = document.createElement('div');
+    pion.className = 'pion';
+    pion.style.background = '#2A5298';
+    pion.style.left = '2px';
+    pion.style.right = 'auto';
+    pion.textContent = 'B';
+    cellB.appendChild(pion);
+  }
+  // Remove active from all then re-add
+  document.querySelectorAll('.cell').forEach(c => c.classList.remove('active'));
+  const activeCell = turn === 'A' ? cellA : document.getElementById(`cell-${posB}`);
+  if (activeCell) activeCell.classList.add('active');
+}
+
+function log(msg, highlight = false) {
+  const logEl = document.getElementById('gameLog');
+  const item = document.createElement('div');
+  item.className = 'log-item' + (highlight ? ' highlight' : '');
+  item.textContent = msg;
+  logEl.prepend(item);
+}
+
+function rollDice() {
+  if (!diceActive || gameOver) return;
+  const dice = Math.floor(Math.random() * 6) + 1;
+  const diceEmojis = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+  document.getElementById('diceResult').textContent = diceEmojis[dice - 1];
+  diceActive = false;
+  document.getElementById('diceBtn').disabled = true;
+
+  const who = turn === 'A' ? '🔴 Kamu' : '🔵 AI';
+  log(`${who} melempar dadu: ${dice}`);
+
+  if (turn === 'A') {
+    posA = Math.min(posA + dice, CELLS - 1);
+    processCell(posA, 'A', dice);
+  } else {
+    posB = Math.min(posB + dice, CELLS - 1);
+    processCell(posB, 'B', dice);
+  }
+}
+
+const quizData = [
+  {q:"Rambu segitiga kuning dengan tanda seru artinya...",opts:["Peringatan Bahaya","Dilarang Masuk","Wajib Lurus","Parkir"],ok:0,svg:`<svg width="80" height="74" viewBox="0 0 80 74" fill="none"><polygon points="40,4 74,70 6,70" fill="#FFD600"/><polygon points="40,10 70,68 10,68" fill="none" stroke="#E53E3E" stroke-width="2.5"/><text x="40" y="58" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="24" fill="#E53E3E">!</text></svg>`,why:"Segitiga kuning = Rambu Peringatan! Ada bahaya di depan."},
+  {q:"Rambu STOP berbentuk...",opts:["Segitiga","Lingkaran","Segi Delapan","Persegi"],ok:2,svg:`<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><polygon points="23,3 57,3 77,23 77,57 57,77 23,77 3,57 3,23" fill="#E53E3E"/><text x="40" y="46" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="14" fill="white">STOP</text></svg>`,why:"Rambu STOP berbentuk segi delapan — unik agar mudah dikenali dari jauh!"},
+  {q:"Lingkaran biru berarti rambu...",opts:["Larangan","Peringatan","Perintah","Informasi"],ok:2,svg:`<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" fill="#2A5298"/><polygon points="40,16 48,28 44,28 44,56 36,56 36,28 32,28" fill="white"/></svg>`,why:"Lingkaran biru = Rambu Perintah! Kamu WAJIB mengikuti instruksinya."},
+  {q:"Rambu larangan berwarna dasar...",opts:["Biru","Hijau","Merah & Putih","Kuning"],ok:2,svg:`<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" fill="white" stroke="#E53E3E" stroke-width="7"/><rect x="12" y="34" width="56" height="12" rx="6" fill="#E53E3E"/></svg>`,why:"Rambu larangan berwarna dasar putih dengan lingkaran/garis merah!"},
+  {q:"Kamu lihat rambu persegi biru bertuliskan 'P'. Artinya...",opts:["Dilarang Parkir","Tempat Parkir","Batas Kecepatan","Putar Balik"],ok:1,svg:`<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="4" y="4" width="72" height="72" rx="10" fill="#2A5298"/><text x="40" y="54" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="40" fill="white">P</text></svg>`,why:"Rambu persegi biru dengan huruf P = Tempat Parkir yang tersedia!"},
+];
+let quizIdx = 0;
+
+function processCell(pos, player, dice) {
+  updatePions();
+  const type = cellTypes[pos] || 'normal';
+  const who = player === 'A' ? '🔴 Kamu' : '🔵 AI';
+
+  if (pos === CELLS - 1) {
+    log(`${who} mencapai FINISH! 🏁`, true);
+    endGame(player);
+    return;
+  }
+
+  setTimeout(() => {
+    if (type === 'soal') {
+      log(`${who} mendapat tantangan soal!`, true);
+      showChallenge(player);
+    } else if (type === 'bonus') {
+      showBonus(player);
+    } else if (type === 'trap') {
+      showTrap(player);
+    } else {
+      nextTurn();
+    }
+  }, 400);
+}
+
+function showChallenge(player) {
+  const q = quizData[quizIdx % quizData.length];
+  quizIdx++;
+  const who = player === 'A' ? '🔴 Kamu' : '🔵 AI';
+  const optsHtml = q.opts.map((o, i) =>
+    `<button class="modal-opt" id="opt-${i}" onclick="answerQ(${i}, ${q.ok}, '${player}')">${o}</button>`
+  ).join('');
+
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-type-badge" style="background:rgba(255,214,0,.15);color:#C9A800;">❓ Tantangan Soal — ${who}</div>
+    <h3 style="font-size:1rem;">${q.q}</h3>
+    <div class="modal-svg">${q.svg}</div>
+    <div class="modal-opts">${optsHtml}</div>
+    <div class="modal-fb" id="modalFb"></div>
+    <button class="modal-next" id="modalNext">Lanjut ▶</button>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function answerQ(chosen, correct, player) {
+  document.querySelectorAll('.modal-opt').forEach(b => b.disabled = true);
+  const isOk = chosen === correct;
+  document.getElementById(`opt-${chosen}`).classList.add(isOk ? 'correct' : 'wrong');
+  if (!isOk) document.getElementById(`opt-${correct}`).classList.add('correct');
+  const q = quizData[(quizIdx - 1) % quizData.length];
+  document.getElementById('modalFb').innerHTML = isOk
+    ? `<span style="color:var(--hijau-dark);">🎉 Betul! ${q.why}</span>`
+    : `<span style="color:#C53030;">❌ Hampir! ${q.why}</span>`;
+  if (isOk) {
+    if (player === 'A') { scoreA += 10; document.getElementById('scoreA').textContent = scoreA; }
+    else { scoreB += 10; document.getElementById('scoreB').textContent = scoreB; }
+    log(`${player === 'A' ? '🔴 Kamu' : '🔵 AI'} menjawab benar! +10 poin`, true);
+  } else {
+    log(`${player === 'A' ? '🔴 Kamu' : '🔵 AI'} menjawab salah.`);
+  }
+  const next = document.getElementById('modalNext');
+  next.style.display = 'inline-block';
+  next.onclick = () => { closeModal(); nextTurn(); };
+}
+
+function showBonus(player) {
+  const who = player === 'A' ? '🔴 Kamu' : '🔵 AI';
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-bonus">
+      <div style="font-size:3rem;margin-bottom:12px;">⭐</div>
+      <h3 style="color:var(--hijau-dark);margin-bottom:8px;">Kotak Bonus!</h3>
+      <p style="font-size:.9rem;color:var(--hijau-dark);">${who} mendapat +5 poin dan maju 2 kotak!</p>
+      <button class="modal-next" style="display:inline-block;background:var(--hijau);margin-top:14px;" onclick="claimBonus('${player}')">Ambil Bonus ⭐</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function claimBonus(player) {
+  if (player === 'A') { scoreA += 5; posA = Math.min(posA + 2, CELLS - 1); document.getElementById('scoreA').textContent = scoreA; }
+  else { scoreB += 5; posB = Math.min(posB + 2, CELLS - 1); document.getElementById('scoreB').textContent = scoreB; }
+  log(`${player === 'A' ? '🔴 Kamu' : '🔵 AI'} klaim bonus +5 poin & +2 kotak!`, true);
+  updatePions();
+  closeModal();
+  nextTurn();
+}
+
+function showTrap(player) {
+  const who = player === 'A' ? '🔴 Kamu' : '🔵 AI';
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-trap">
+      <div style="font-size:3rem;margin-bottom:12px;">💀</div>
+      <h3 style="color:#C53030;margin-bottom:8px;">Kotak Jebakan!</h3>
+      <p style="font-size:.9rem;color:#C53030;">${who} terkena jebakan dan mundur 2 kotak!</p>
+      <button class="modal-next" style="display:inline-block;background:var(--merah);margin-top:14px;" onclick="hitTrap('${player}')">OK, Mundur 2 😓</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function hitTrap(player) {
+  if (player === 'A') { posA = Math.max(posA - 2, 0); }
+  else { posB = Math.max(posB - 2, 0); }
+  log(`${player === 'A' ? '🔴 Kamu' : '🔵 AI'} kena jebakan — mundur 2 kotak! 💀`);
+  updatePions();
+  closeModal();
+  nextTurn();
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function nextTurn() {
+  turn = turn === 'A' ? 'B' : 'A';
+  round++;
+  document.getElementById('roundNum').textContent = round;
+  document.getElementById('playerTurn').textContent = `Giliran: ${turn === 'A' ? '🔴 Kamu' : '🔵 AI'}`;
+  diceActive = true;
+  document.getElementById('diceBtn').disabled = false;
+
+  if (turn === 'B') {
+    // AI auto plays after delay
+    document.getElementById('diceBtn').disabled = true;
+    document.getElementById('playerTurn').textContent = '🔵 AI sedang melempar dadu...';
+    setTimeout(() => {
+      rollDice();
+    }, 1200);
+  }
+}
+
+function endGame(winner) {
+  gameOver = true;
+  document.getElementById('diceBtn').disabled = true;
+  const who = winner === 'A' ? '🔴 Kamu' : '🔵 AI';
+  const finalScoreA = scoreA + (winner === 'A' ? 50 : 0);
+  const finalScoreB = scoreB + (winner === 'B' ? 50 : 0);
+  document.getElementById('modalContent').innerHTML = `
+    <div style="text-align:center;padding:10px;">
+      <div style="font-size:4rem;margin-bottom:10px;">${winner === 'A' ? '🏆' : '🤖'}</div>
+      <h3>${who} Menang!</h3>
+      <p style="color:#5A6B8A;margin:8px 0 20px;font-size:.92rem;">Selamat telah menyelesaikan board game!</p>
+      <div style="display:flex;gap:20px;justify-content:center;margin-bottom:20px;">
+        <div style="text-align:center;"><div style="font-size:2rem;font-family:Nunito;font-weight:900;color:var(--oranye);">${finalScoreA}</div><div style="font-size:.78rem;color:#8A9BB4;">🔴 Kamu</div></div>
+        <div style="text-align:center;"><div style="font-size:2rem;font-family:Nunito;font-weight:900;color:var(--biru-mid);">${finalScoreB}</div><div style="font-size:.78rem;color:#8A9BB4;">🔵 AI</div></div>
+      </div>
+      <button class="modal-next" style="display:inline-block;" onclick="resetGame()">🔄 Main Lagi</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function resetGame() {
+  posA = 0; posB = 0; scoreA = 0; scoreB = 0; turn = 'A'; round = 1; gameOver = false; diceActive = true;
+  document.getElementById('scoreA').textContent = 0;
+  document.getElementById('scoreB').textContent = 0;
+  document.getElementById('roundNum').textContent = 1;
+  document.getElementById('diceResult').textContent = '—';
+  document.getElementById('playerTurn').textContent = 'Giliran: 🔴 Kamu';
+  document.getElementById('diceBtn').disabled = false;
+  document.getElementById('gameLog').innerHTML = '<div class="log-item highlight">🎮 Game baru dimulai! Giliran Kamu pertama.</div>';
+  buildBoard();
+  closeModal();
+}
+
+buildBoard();
+</script>
+</body>
+</html>

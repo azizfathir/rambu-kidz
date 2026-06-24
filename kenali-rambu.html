@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenali Rambu — RambuKidz</title>
+<meta name="description" content="Pelajari 20+ rambu lalu lintas lewat kartu visual interaktif, kuis bergambar, dan cerita bertema keselamatan jalan yang kontekstual.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kuning:#FFD600; --kuning-dark:#C9A800;
+  --biru:#1B3A6B; --biru-mid:#2A5298;
+  --hijau:#00C896; --hijau-dark:#009E78;
+  --oranye:#FF6B35; --oranye-dark:#CC4A1A;
+  --merah:#E53E3E;
+  --putih:#F7F9FF; --putih-pure:#FFFFFF;
+  --aspal:#1A1A2E; --abu:#E8EBF4; --abu-dark:#C5CAD9;
+  --font-display:'Nunito',sans-serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px; --r-md:12px; --r-lg:20px; --r-xl:32px;
+  --ease:all 0.25s cubic-bezier(.4,0,.2,1);
+  --accent: var(--kuning);
+  --accent-dark: var(--kuning-dark);
+  --accent-light: rgba(255,214,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--putih);color:var(--aspal);overflow-x:hidden;}
+h1,h2,h3,h4{font-family:var(--font-display);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(27,58,107,.97);backdrop-filter:blur(12px);padding:14px 5%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-text{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:var(--kuning);}
+.nav-back{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;font-weight:500;transition:var(--ease);border:1px solid rgba(255,255,255,.2);padding:7px 16px;border-radius:100px;}
+.nav-back:hover{color:var(--kuning);border-color:var(--kuning);}
+
+/* HERO */
+.hero{min-height:55vh;background:linear-gradient(135deg,var(--biru) 0%,#0D2251 100%);position:relative;overflow:hidden;display:flex;align-items:center;padding:120px 5% 80px;gap:60px;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg::before{content:'';position:absolute;top:-40%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,0,.08) 0%,transparent 70%);}
+.hero-bg::after{content:'';position:absolute;bottom:-20%;left:10%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,150,.05) 0%,transparent 70%);}
+.hero-text{position:relative;z-index:2;max-width:600px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,0,.12);border:1px solid rgba(255,214,0,.3);color:var(--kuning);padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:20px;}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero h1 span{color:var(--kuning);}
+.hero-sub{color:rgba(255,255,255,.7);font-size:1.05rem;line-height:1.7;margin-bottom:32px;max-width:480px;}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--kuning);}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.5);font-weight:500;margin-top:2px;}
+.hero-visual{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,80px);gap:16px;flex-shrink:0;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* SIGN CARDS in hero */
+.sign-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:var(--ease);}
+.sign-card:nth-child(1){animation:float 3s ease-in-out infinite;}
+.sign-card:nth-child(2){animation:float 3s ease-in-out infinite;animation-delay:.6s;}
+.sign-card:nth-child(3){animation:float 3s ease-in-out infinite;animation-delay:1.2s;}
+.sign-card:nth-child(4){animation:float 3s ease-in-out infinite;animation-delay:.3s;}
+.sign-card:nth-child(5){animation:float 3s ease-in-out infinite;animation-delay:.9s;}
+.sign-card:nth-child(6){animation:float 3s ease-in-out infinite;animation-delay:1.5s;}
+.sign-card:hover{background:rgba(255,255,255,.15);transform:translateY(-4px);border-color:var(--kuning);}
+.sign-name{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.7);text-align:center;line-height:1.3;}
+
+/* SECTIONS */
+section{padding:72px 5%;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--kuning-dark);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;}
+.eyebrow::before{content:'';display:block;width:18px;height:3px;background:var(--kuning);border-radius:2px;}
+.tc{text-align:center;} .mx{max-width:640px;margin-left:auto;margin-right:auto;}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.2;}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:44px;}
+.cat-card{background:var(--putih-pure);border-radius:var(--r-lg);padding:28px 22px;border:2px solid var(--abu);transition:var(--ease);cursor:pointer;position:relative;overflow:hidden;}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);}
+.cat-card:hover{border-color:transparent;box-shadow:0 12px 40px rgba(27,58,107,.15);transform:translateY(-5px);}
+.cat-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.8rem;}
+.cat-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--aspal);}
+.cat-card p{font-size:.85rem;color:#5A6B8A;line-height:1.6;}
+.cat-count{display:inline-block;margin-top:12px;padding:3px 12px;border-radius:100px;font-size:.74rem;font-weight:600;background:rgba(255,214,0,.15);color:var(--kuning-dark);}
+
+/* RAMBU GRID */
+.rambu-section{background:var(--putih-pure);}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;margin-top:28px;}
+.filter-btn{padding:8px 18px;border-radius:100px;font-family:var(--font-body);font-size:.84rem;font-weight:600;border:2px solid var(--abu-dark);background:transparent;color:#5A6B8A;cursor:pointer;transition:var(--ease);}
+.filter-btn.active,.filter-btn:hover{background:var(--kuning);border-color:var(--kuning);color:var(--aspal);}
+.rambu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;}
+.rambu-card{background:var(--putih-pure);border-radius:var(--r-lg);padding:22px 16px;border:2px solid var(--abu);text-align:center;cursor:pointer;transition:var(--ease);position:relative;}
+.rambu-card:hover{border-color:var(--kuning);box-shadow:0 8px 28px rgba(255,214,0,.2);transform:translateY(-3px);}
+.rambu-card.hidden{display:none;}
+.rambu-svg{margin-bottom:12px;}
+.rambu-name{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--aspal);margin-bottom:4px;line-height:1.3;}
+.rambu-type{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:100px;display:inline-block;margin-top:6px;}
+.type-peringatan{background:rgba(255,214,0,.18);color:var(--kuning-dark);}
+.type-larangan{background:rgba(229,62,62,.12);color:#C53030;}
+.type-perintah{background:rgba(42,82,152,.12);color:var(--biru-mid);}
+.type-informasi{background:rgba(0,200,150,.12);color:var(--hijau-dark);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,26,46,.7);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:#fff;border-radius:var(--r-xl);padding:36px;max-width:480px;width:100%;transform:scale(.9);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.modal-overlay.open .modal{transform:scale(1);}
+.modal-top{display:flex;justify-content:center;margin-bottom:20px;}
+.modal-type{font-size:.78rem;font-weight:700;padding:4px 14px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;}
+.modal h3{font-size:1.4rem;font-weight:900;text-align:center;margin-bottom:12px;}
+.modal-desc{font-size:.92rem;color:#5A6B8A;line-height:1.7;text-align:center;margin-bottom:20px;}
+.modal-fact{background:rgba(255,214,0,.1);border-left:4px solid var(--kuning);border-radius:0 var(--r-md) var(--r-md) 0;padding:14px 16px;font-size:.86rem;color:#5A4A00;line-height:1.6;}
+.modal-fact strong{display:block;margin-bottom:4px;color:var(--aspal);}
+.modal-close{display:block;margin:20px auto 0;padding:10px 28px;background:var(--kuning);border:none;border-radius:100px;font-family:var(--font-body);font-weight:700;cursor:pointer;font-size:.9rem;transition:var(--ease);}
+.modal-close:hover{background:var(--kuning-dark);}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px;}
+.tip-card{background:linear-gradient(135deg,var(--biru),var(--biru-mid));border-radius:var(--r-lg);padding:28px;color:#fff;}
+.tip-num{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:rgba(255,214,0,.2);line-height:1;margin-bottom:10px;}
+.tip-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.tip-card p{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.6;}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:var(--ease);}
+.btn-primary{background:var(--kuning);color:var(--aspal);}
+.btn-primary:hover{background:var(--kuning-dark);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--biru);border:2px solid var(--biru);}
+.btn-outline:hover{background:var(--biru);color:#fff;}
+.center{display:flex;justify-content:center;margin-top:36px;gap:14px;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:32px 5%;text-align:center;font-size:.85rem;}
+footer a{color:var(--kuning);text-decoration:none;}
+
+@media(max-width:768px){
+  .hero{flex-direction:column;min-height:auto;padding-bottom:60px;}
+  .hero-visual{grid-template-columns:repeat(3,70px);}
+  .rambu-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="9" fill="#FFD600"/>
+      <rect x="7" y="12" width="22" height="15" rx="3" fill="#1B3A6B"/>
+      <rect x="10" y="15" width="16" height="9" rx="2" fill="white" fill-opacity=".9"/>
+      <path d="M18 17.5L22 20L18 22.5" stroke="#1B3A6B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 20L22 20" stroke="#1B3A6B" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="16.5" y="27" width="3" height="7" rx="1" fill="#1B3A6B"/>
+    </svg>
+    <span class="nav-logo-text">RambuKidz</span>
+  </a>
+  <a href="index.html" class="nav-back">← Kembali ke Beranda</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-text">
+    <div class="hero-badge">🎮 Pilar 1 — Gamifikasi Digital</div>
+    <h1>Kenali <span>Rambu</span> Lalu Lintas</h1>
+    <p class="hero-sub">Pelajari 20+ rambu lalu lintas lewat kartu visual interaktif. Klik setiap rambu untuk mengetahui arti, bentuk, warna, dan fakta menariknya!</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Jenis Rambu</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Kategori</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Interaktif</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- Peringatan -->
+    <div class="sign-card">
+      <svg width="52" height="48" viewBox="0 0 52 48" fill="none"><polygon points="26,4 48,44 4,44" fill="#FFD600"/><polygon points="26,9 44,42 8,42" fill="none" stroke="#E53E3E" stroke-width="2"/><text x="26" y="35" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="#E53E3E">!</text></svg>
+      <div class="sign-name">Bahaya</div>
+    </div>
+    <!-- Stop -->
+    <div class="sign-card">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><polygon points="16,2 36,2 50,16 50,36 36,50 16,50 2,36 2,16" fill="#E53E3E"/><text x="26" y="31" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="11" fill="white">STOP</text></svg>
+      <div class="sign-name">STOP</div>
+    </div>
+    <!-- Wajib -->
+    <div class="sign-card">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="#2A5298"/><polygon points="26,10 34,22 30,22 30,38 22,38 22,22 18,22" fill="white"/></svg>
+      <div class="sign-name">Wajib Lurus</div>
+    </div>
+    <!-- Larangan -->
+    <div class="sign-card">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="white" stroke="#E53E3E" stroke-width="5"/><rect x="8" y="22" width="36" height="8" rx="4" fill="#E53E3E"/></svg>
+      <div class="sign-name">Dilarang</div>
+    </div>
+    <!-- Informasi -->
+    <div class="sign-card">
+      <svg width="52" height="40" viewBox="0 0 52 40" fill="none"><rect x="2" y="2" width="48" height="36" rx="6" fill="#1B3A6B"/><text x="26" y="26" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="white">i</text></svg>
+      <div class="sign-name">Informasi</div>
+    </div>
+    <!-- Parkir -->
+    <div class="sign-card">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="8" fill="#2A5298"/><text x="26" y="34" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">P</text></svg>
+      <div class="sign-name">Parkir</div>
+    </div>
+  </div>
+</section>
+
+<!-- KATEGORI -->
+<section style="background:var(--putih);padding:72px 5%;">
+  <div class="tc mx">
+    <div class="eyebrow">Jelajahi Kategori</div>
+    <h2>Empat Jenis Rambu<br>yang Wajib Dikenal</h2>
+    <p style="margin-top:14px;color:#5A6B8A;font-size:.95rem;">Di Indonesia, rambu lalu lintas dibagi ke dalam 4 kategori utama berdasarkan fungsinya.</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="filterRambu('peringatan')">
+      <div class="cat-icon" style="background:rgba(255,214,0,.15);">⚠️</div>
+      <h3>Rambu Peringatan</h3>
+      <p>Memberi peringatan adanya bahaya atau kondisi jalan yang memerlukan perhatian khusus.</p>
+      <span class="cat-count">5 rambu</span>
+    </div>
+    <div class="cat-card" onclick="filterRambu('larangan')">
+      <div class="cat-icon" style="background:rgba(229,62,62,.1);">🚫</div>
+      <h3>Rambu Larangan</h3>
+      <p>Melarang pengguna jalan melakukan tindakan atau gerakan tertentu demi keselamatan.</p>
+      <span class="cat-count">5 rambu</span>
+    </div>
+    <div class="cat-card" onclick="filterRambu('perintah')">
+      <div class="cat-icon" style="background:rgba(42,82,152,.1);">✅</div>
+      <h3>Rambu Perintah</h3>
+      <p>Memerintahkan pengguna jalan untuk melakukan tindakan atau mematuhi aturan tertentu.</p>
+      <span class="cat-count">5 rambu</span>
+    </div>
+    <div class="cat-card" onclick="filterRambu('informasi')">
+      <div class="cat-icon" style="background:rgba(0,200,150,.1);">ℹ️</div>
+      <h3>Rambu Informasi</h3>
+      <p>Memberi petunjuk arah, informasi fasilitas, atau tempat yang berguna bagi pengguna jalan.</p>
+      <span class="cat-count">5 rambu</span>
+    </div>
+  </div>
+</section>
+
+<!-- RAMBU GRID -->
+<section class="rambu-section" style="padding:72px 5%;">
+  <div class="tc mx">
+    <div class="eyebrow">Koleksi Rambu</div>
+    <h2>Klik Rambu untuk<br>Belajar Lebih Dalam</h2>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterRambu('semua', this)">Semua</button>
+    <button class="filter-btn" onclick="filterRambu('peringatan', this)">⚠️ Peringatan</button>
+    <button class="filter-btn" onclick="filterRambu('larangan', this)">🚫 Larangan</button>
+    <button class="filter-btn" onclick="filterRambu('perintah', this)">✅ Perintah</button>
+    <button class="filter-btn" onclick="filterRambu('informasi', this)">ℹ️ Informasi</button>
+  </div>
+  <div class="rambu-grid" id="rambuGrid">
+    <!-- Peringatan -->
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(0)">
+      <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none"><polygon points="32,4 60,56 4,56" fill="#FFD600"/><polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5"/><text x="32" y="46" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="22" fill="#E53E3E">!</text></svg></div>
+      <div class="rambu-name">Bahaya Umum</div>
+      <span class="rambu-type type-peringatan">Peringatan</span>
+    </div>
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(1)">
+      <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none"><polygon points="32,4 60,56 4,56" fill="#FFD600"/><polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5"/><path d="M22 40 L32 28 L42 40" fill="none" stroke="#E53E3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 44 L32 32 L42 44" fill="none" stroke="#E53E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg></div>
+      <div class="rambu-name">Tanjakan Berbahaya</div>
+      <span class="rambu-type type-peringatan">Peringatan</span>
+    </div>
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(2)">
+      <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none"><polygon points="32,4 60,56 4,56" fill="#FFD600"/><polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5"/><path d="M18 42 Q28 26 32 36 Q36 46 46 30" fill="none" stroke="#E53E3E" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="rambu-name">Tikungan Berbahaya</div>
+      <span class="rambu-type type-peringatan">Peringatan</span>
+    </div>
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(3)">
+      <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none"><polygon points="32,4 60,56 4,56" fill="#FFD600"/><polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5"/><circle cx="24" cy="36" r="6" fill="none" stroke="#E53E3E" stroke-width="2.5"/><circle cx="40" cy="36" r="6" fill="none" stroke="#E53E3E" stroke-width="2.5"/><path d="M18 32 L22 28" stroke="#E53E3E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div class="rambu-name">Hati-hati Kendaraan</div>
+      <span class="rambu-type type-peringatan">Peringatan</span>
+    </div>
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(4)">
+      <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none"><polygon points="32,4 60,56 4,56" fill="#FFD600"/><polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5"/><path d="M24 42 L24 30 L32 26 L40 30 L40 42" fill="none" stroke="#E53E3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="28" y="36" width="8" height="6" rx="1" fill="#E53E3E"/></svg></div>
+      <div class="rambu-name">Hati-hati Pejalan Kaki</div>
+      <span class="rambu-type type-peringatan">Peringatan</span>
+    </div>
+
+    <!-- Larangan -->
+    <div class="rambu-card" data-type="larangan" onclick="openModal(5)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><polygon points="17,2 43,2 58,17 58,43 43,58 17,58 2,43 2,17" fill="#E53E3E"/><polygon points="19,6 41,6 54,19 54,41 41,54 19,54 6,41 6,19" fill="none" stroke="white" stroke-width="2"/><text x="30" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="13" fill="white">STOP</text></svg></div>
+      <div class="rambu-name">Berhenti (STOP)</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+    </div>
+    <div class="rambu-card" data-type="larangan" onclick="openModal(6)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="6"/><rect x="8" y="26" width="44" height="8" rx="4" fill="#E53E3E"/></svg></div>
+      <div class="rambu-name">Dilarang Melintas</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+    </div>
+    <div class="rambu-card" data-type="larangan" onclick="openModal(7)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="5"/><circle cx="30" cy="30" r="14" fill="white" stroke="#E53E3E" stroke-width="5"/><line x1="8" y1="8" x2="52" y2="52" stroke="#E53E3E" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <div class="rambu-name">Dilarang Parkir</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+    </div>
+    <div class="rambu-card" data-type="larangan" onclick="openModal(8)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="5"/><path d="M38 30 A8 8 0 1 1 30 22" fill="none" stroke="#E53E3E" stroke-width="4" stroke-linecap="round"/><line x1="8" y1="8" x2="52" y2="52" stroke="#E53E3E" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <div class="rambu-name">Dilarang Putar Balik</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+    </div>
+    <div class="rambu-card" data-type="larangan" onclick="openModal(9)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="5"/><path d="M42 30 L18 30 M30 18 L18 30 L30 42" fill="none" stroke="#E53E3E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="8" x2="52" y2="52" stroke="#E53E3E" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <div class="rambu-name">Dilarang Belok Kiri</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+    </div>
+
+    <!-- Perintah -->
+    <div class="rambu-card" data-type="perintah" onclick="openModal(10)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="#2A5298"/><circle cx="30" cy="30" r="21" fill="none" stroke="white" stroke-width="1.5" stroke-opacity=".4"/><polygon points="30,12 38,24 34,24 34,44 26,44 26,24 22,24" fill="white"/></svg></div>
+      <div class="rambu-name">Wajib Lurus</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+    </div>
+    <div class="rambu-card" data-type="perintah" onclick="openModal(11)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="#2A5298"/><polygon points="46,30 34,22 34,26 16,26 16,34 34,34 34,38" fill="white"/></svg></div>
+      <div class="rambu-name">Wajib Belok Kanan</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+    </div>
+    <div class="rambu-card" data-type="perintah" onclick="openModal(12)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="#2A5298"/><polygon points="14,30 26,22 26,26 44,26 44,34 26,34 26,38" fill="white"/></svg></div>
+      <div class="rambu-name">Wajib Belok Kiri</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+    </div>
+    <div class="rambu-card" data-type="perintah" onclick="openModal(13)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="#2A5298"/><text x="30" y="38" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="white">30</text><text x="30" y="22" text-anchor="middle" font-family="Nunito" font-size="9" fill="rgba(255,255,255,.6)">km/jam</text></svg></div>
+      <div class="rambu-name">Batas Kecepatan</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+    </div>
+    <div class="rambu-card" data-type="perintah" onclick="openModal(14)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="27" fill="#2A5298"/><circle cx="30" cy="30" r="16" fill="none" stroke="white" stroke-width="3"/><polygon points="30,14 36,26 24,26" fill="white"/></svg></div>
+      <div class="rambu-name">Wajib Putar Balik</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+    </div>
+
+    <!-- Informasi -->
+    <div class="rambu-card" data-type="informasi" onclick="openModal(15)">
+      <div class="rambu-svg"><svg width="70" height="50" viewBox="0 0 70 50" fill="none"><rect x="2" y="2" width="66" height="46" rx="7" fill="#1B3A6B"/><rect x="6" y="6" width="58" height="38" rx="5" fill="none" stroke="white" stroke-width="1" stroke-opacity=".3"/><polygon points="35,12 52,25 35,38 18,25" fill="white"/></svg></div>
+      <div class="rambu-name">Petunjuk Arah</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+    </div>
+    <div class="rambu-card" data-type="informasi" onclick="openModal(16)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="8" fill="#2A5298"/><text x="30" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">P</text></svg></div>
+      <div class="rambu-name">Tempat Parkir</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+    </div>
+    <div class="rambu-card" data-type="informasi" onclick="openModal(17)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="8" fill="#1B3A6B"/><circle cx="30" cy="24" r="8" fill="white"/><text x="30" y="28" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="10" fill="#1B3A6B">i</text><rect x="22" y="36" width="16" height="2.5" rx="1" fill="white" fill-opacity=".8"/><rect x="24" y="42" width="12" height="2" rx="1" fill="white" fill-opacity=".5"/></svg></div>
+      <div class="rambu-name">Pusat Informasi</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+    </div>
+    <div class="rambu-card" data-type="informasi" onclick="openModal(18)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="8" fill="#009E78"/><text x="30" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="13" fill="white">RS +</text></svg></div>
+      <div class="rambu-name">Rumah Sakit</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+    </div>
+    <div class="rambu-card" data-type="informasi" onclick="openModal(19)">
+      <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="4" y="4" width="52" height="52" rx="8" fill="#1B3A6B"/><path d="M15 42 L30 18 L45 42" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="22" y1="33" x2="38" y2="33" stroke="white" stroke-width="2"/></svg></div>
+      <div class="rambu-name">Jembatan Penyeberangan</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+    </div>
+  </div>
+
+  <div class="center">
+    <a href="index.html#kuis" class="btn btn-primary">🎯 Coba Kuis Rambu</a>
+  </div>
+</section>
+
+<!-- TIPS BELAJAR -->
+<section style="background:var(--aspal);padding:72px 5%;">
+  <div class="tc mx" style="color:#fff;">
+    <div class="eyebrow" style="color:rgba(255,214,0,.8);">
+      <span style="display:block;width:18px;height:3px;background:var(--kuning);border-radius:2px;"></span>
+      Tips Hafal Rambu
+    </div>
+    <h2 style="color:#fff;">Cara Mudah Mengingat<br>Arti Rambu Lalu Lintas</h2>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-num">01</div>
+      <h3>Perhatikan Bentuknya</h3>
+      <p>Segitiga = Peringatan, Lingkaran = Larangan/Perintah, Segi delapan = STOP, Persegi = Informasi.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">02</div>
+      <h3>Perhatikan Warnanya</h3>
+      <p>Kuning = Hati-hati, Merah = Larangan/Bahaya, Biru = Perintah/Informasi, Hijau = Petunjuk Jalan.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">03</div>
+      <h3>Baca Simbolnya</h3>
+      <p>Simbol di dalam rambu langsung menunjukkan arti — panah lurus = lurus, panah belok = belok.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">04</div>
+      <h3>Praktikkan di Jalan</h3>
+      <p>Amati rambu saat perjalanan bersama orang tua. Setiap rambu nyata yang kamu temukan = hafal seumur hidup!</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-top" id="modalType"></div>
+    <div style="display:flex;justify-content:center;margin-bottom:16px;" id="modalSvg"></div>
+    <h3 id="modalName"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-fact" id="modalFact"></div>
+    <button class="modal-close" onclick="closeModalDirect()">✓ Mengerti!</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 RambuKidz — <a href="index.html">Kembali ke Beranda</a> · LIDM 2026 Divisi Microteaching Digital</p>
+</footer>
+
+<script>
+const rambuData = [
+  // Peringatan (0-4)
+  {name:"Bahaya Umum",type:"peringatan",desc:"Rambu berbentuk segitiga kuning dengan tanda seru merah. Ditempatkan di lokasi yang memiliki potensi bahaya yang tidak spesifik.",fact:"<strong>Fakta Menarik:</strong> Warna kuning dipilih karena paling mudah terlihat oleh mata manusia bahkan dalam kondisi hujan atau berkabut!",svg:`<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><text x="45" y="66" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="30" fill="#E53E3E">!</text></svg>`},
+  {name:"Tanjakan Berbahaya",type:"peringatan",desc:"Rambu segitiga dengan gambar panah ke atas menandakan ada tanjakan curam di depan. Pengemudi harus memperlambat laju kendaraan.",fact:"<strong>Ingat:</strong> Saat menanjak, kendaraan membutuhkan tenaga lebih. Pastikan kendaraan dalam kondisi prima sebelum melewati tanjakan!",svg:`<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><path d="M28 62 L45 36 L62 62" fill="none" stroke="#E53E3E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  {name:"Tikungan Berbahaya",type:"peringatan",desc:"Rambu segitiga dengan simbol tikungan berarti jalan di depan memiliki belokan tajam yang berpotensi berbahaya.",fact:"<strong>Tips Aman:</strong> Kurangi kecepatan sebelum memasuki tikungan, bukan di tengah tikungan. Hindari mendahului di area ini!",svg:`<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><path d="M25 62 Q38 38 45 50 Q52 62 65 42" fill="none" stroke="#E53E3E" stroke-width="4" stroke-linecap="round"/></svg>`},
+  {name:"Hati-hati Kendaraan",type:"peringatan",desc:"Memberi peringatan bahwa di depan ada area dengan lalu lintas padat atau kendaraan berat yang sering melintas.",fact:"<strong>Fakta:</strong> Rambu ini sering dipasang di dekat pabrik, pasar, atau persimpangan sibuk untuk mengingatkan pengemudi agar lebih waspada!",svg:`<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><circle cx="33" cy="54" r="9" fill="none" stroke="#E53E3E" stroke-width="3"/><circle cx="57" cy="54" r="9" fill="none" stroke="#E53E3E" stroke-width="3"/><path d="M25 46 L30 38 L60 38 L65 46" fill="none" stroke="#E53E3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+  {name:"Hati-hati Pejalan Kaki",type:"peringatan",desc:"Rambu ini memperingatkan pengemudi bahwa di depan ada penyeberangan pejalan kaki atau area dengan banyak orang berjalan.",fact:"<strong>Penting:</strong> Pejalan kaki memiliki hak utama di zebra cross. Kendaraan WAJIB berhenti memberi jalan kepada pejalan kaki!",svg:`<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><circle cx="45" cy="36" r="7" fill="#E53E3E"/><path d="M38 55 L42 43 L45 47 L48 43 L52 55" fill="none" stroke="#E53E3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 48 L56 48" fill="none" stroke="#E53E3E" stroke-width="2.5" stroke-linecap="round"/></svg>`},
+  // Larangan (5-9)
+  {name:"Berhenti (STOP)",type:"larangan",desc:"Rambu segi delapan merah dengan tulisan STOP. Ini adalah rambu paling tegas — semua kendaraan WAJIB berhenti penuh sebelum melanjutkan perjalanan.",fact:"<strong>Wajib Tahu:</strong> Rambu STOP berbentuk segi delapan agar bisa dikenali dari belakang bahkan ketika tertutup salju atau benda lain. Bentuknya unik di seluruh dunia!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><polygon points="24,4 60,4 80,24 80,60 60,80 24,80 4,60 4,24" fill="#E53E3E"/><polygon points="26,9 58,9 75,26 75,58 58,75 26,75 9,58 9,26" fill="none" stroke="white" stroke-width="2.5"/><text x="42" y="50" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="white">STOP</text></svg>`},
+  {name:"Dilarang Melintas",type:"larangan",desc:"Lingkaran putih dengan garis horizontal merah tebal. Tidak ada kendaraan sama sekali yang boleh masuk ke jalan ini.",fact:"<strong>Fakta:</strong> Ini berbeda dengan 'Dilarang Masuk'. Dilarang melintas berarti jalan sudah penuh atau khusus untuk kendaraan tertentu saja!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="8"/><rect x="12" y="36" width="60" height="12" rx="6" fill="#E53E3E"/></svg>`},
+  {name:"Dilarang Parkir",type:"larangan",desc:"Lingkaran merah dengan huruf P dicoret. Kendaraan tidak boleh berhenti dalam jangka waktu lama untuk parkir di area ini.",fact:"<strong>Ingat:</strong> Ada perbedaan antara 'Dilarang Parkir' dan 'Dilarang Berhenti'. Dilarang Parkir masih boleh berhenti sebentar untuk menaikkan penumpang!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><text x="38" y="52" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="30" fill="#E53E3E">P</text><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>`},
+  {name:"Dilarang Putar Balik",type:"larangan",desc:"Rambu lingkaran merah dengan simbol U-turn dicoret. Kendaraan tidak boleh melakukan putar balik di lokasi ini.",fact:"<strong>Alasan:</strong> Putar balik di sembarang tempat sangat berbahaya karena mengganggu arus lalu lintas dan berpotensi menyebabkan kecelakaan!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M52 42 A10 10 0 1 1 42 32" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round"/><polygon points="42,22 50,34 34,34" fill="#E53E3E"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>`},
+  {name:"Dilarang Belok Kiri",type:"larangan",desc:"Rambu lingkaran merah dengan simbol panah kiri dicoret. Kendaraan harus lurus atau belok ke arah lain, tidak boleh belok kiri.",fact:"<strong>Tips:</strong> Rambu ini sering dipasang di persimpangan dengan arus satu arah untuk mengatur lalu lintas agar tetap lancar dan aman!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M58 42 L30 42 M42 28 L28 42 L42 56" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>`},
+  // Perintah (10-14)
+  {name:"Wajib Lurus",type:"perintah",desc:"Lingkaran biru dengan panah putih ke atas. Pengemudi WAJIB melaju lurus ke depan dan tidak boleh belok ke kiri atau kanan.",fact:"<strong>Fakta:</strong> Rambu perintah berwarna biru untuk membedakannya dari rambu larangan. Biru = informasi/perintah, Merah = larangan!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><circle cx="42" cy="42" r="32" fill="none" stroke="white" stroke-width="1.5" stroke-opacity=".3"/><polygon points="42,16 52,32 46,32 46,62 38,62 38,32 32,32" fill="white"/></svg>`},
+  {name:"Wajib Belok Kanan",type:"perintah",desc:"Lingkaran biru dengan panah putih ke kanan. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kanan.",fact:"<strong>Ingat:</strong> Rambu perintah bersifat WAJIB diikuti. Melanggarnya bukan hanya berbahaya tapi juga melanggar hukum lalu lintas!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="64,42 50,32 50,36 22,36 22,48 50,48 50,52" fill="white"/></svg>`},
+  {name:"Wajib Belok Kiri",type:"perintah",desc:"Lingkaran biru dengan panah putih ke kiri. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kiri.",fact:"<strong>Fungsi:</strong> Rambu ini biasanya dipasang di persimpangan untuk mengatur arus lalu lintas agar tidak terjadi kemacetan atau kecelakaan!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="20,42 34,32 34,36 62,36 62,48 34,48 34,52" fill="white"/></svg>`},
+  {name:"Batas Kecepatan",type:"perintah",desc:"Lingkaran biru dengan angka menunjukkan batas kecepatan maksimum yang diperbolehkan di ruas jalan tersebut.",fact:"<strong>Fakta Hukum:</strong> Batas kecepatan di jalan lingkungan permukiman adalah 30 km/jam, jalan dalam kota 50 km/jam, dan jalan tol 100 km/jam!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><text x="42" y="52" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">30</text><text x="42" y="28" text-anchor="middle" font-family="Nunito" font-size="12" fill="rgba(255,255,255,.6)">km/jam</text></svg>`},
+  {name:"Wajib Putar Balik",type:"perintah",desc:"Lingkaran biru dengan simbol U-turn. Pengemudi DIWAJIBKAN melakukan putar balik di lokasi ini dan tidak boleh lurus.",fact:"<strong>Info:</strong> Rambu ini biasanya ada di ujung jalan buntu atau di perbatasan kawasan tertentu yang tidak boleh dimasuki kendaraan umum!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><path d="M52 42 A10 10 0 1 1 42 32" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><polygon points="42,22 50,34 34,34" fill="white"/></svg>`},
+  // Informasi (15-19)
+  {name:"Petunjuk Arah",type:"informasi",desc:"Rambu persegi panjang biru/hijau dengan tanda panah atau nama tujuan. Memberikan informasi arah menuju suatu tempat atau kota.",fact:"<strong>Warna Berbeda:</strong> Hijau untuk jalan nasional/tol, Biru untuk jalan provinsi/kota, Putih untuk jalan lokal. Warna membantu pengemudi mengenali jenis jalan!",svg:`<svg width="100" height="70" viewBox="0 0 100 70" fill="none"><rect x="4" y="4" width="92" height="62" rx="8" fill="#1B3A6B"/><rect x="8" y="8" width="84" height="54" rx="6" fill="none" stroke="white" stroke-width="1" stroke-opacity=".3"/><polygon points="50,18 70,35 50,52 30,35" fill="white"/></svg>`},
+  {name:"Tempat Parkir",type:"informasi",desc:"Rambu persegi biru dengan huruf P putih besar. Menunjukkan bahwa di area tersebut tersedia fasilitas parkir untuk kendaraan.",fact:"<strong>Tips Berkendara:</strong> Selalu cari rambu parkir sebelum memarkir kendaraan sembarangan. Parkir liar bisa kena tilang dan menggangu lalu lintas!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#2A5298"/><text x="42" y="56" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="40" fill="white">P</text></svg>`},
+  {name:"Pusat Informasi",type:"informasi",desc:"Rambu biru dengan huruf 'i' menunjukkan lokasi pusat informasi atau tempat wisatawan bisa mendapatkan bantuan dan informasi.",fact:"<strong>Fungsi:</strong> Di pusat informasi, kamu bisa mendapatkan peta, jadwal transportasi, dan bantuan perjalanan secara gratis!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><circle cx="42" cy="32" r="12" fill="white"/><text x="42" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="14" fill="#1B3A6B">i</text><rect x="30" y="50" width="24" height="4" rx="2" fill="white" fill-opacity=".8"/><rect x="34" y="60" width="16" height="3" rx="1.5" fill="white" fill-opacity=".5"/></svg>`},
+  {name:"Rumah Sakit",type:"informasi",desc:"Rambu hijau atau biru dengan simbol palang merah atau tulisan RS. Menunjukkan arah atau lokasi fasilitas kesehatan terdekat.",fact:"<strong>Darurat:</strong> Rambu RS sangat penting dalam keadaan darurat medis. Hafal lokasinya sejak dini agar kamu bisa membantu orang yang membutuhkan!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#009E78"/><rect x="30" y="22" width="24" height="40" rx="4" fill="white"/><rect x="20" y="32" width="44" height="20" rx="4" fill="white"/></svg>`},
+  {name:"Jembatan Penyeberangan",type:"informasi",desc:"Rambu yang menunjukkan lokasi jembatan penyeberangan orang (JPO). Mengarahkan pejalan kaki ke tempat menyeberang yang aman.",fact:"<strong>Keselamatan:</strong> Gunakan selalu jembatan penyeberangan atau zebra cross saat menyeberang jalan. Jangan menyeberang sembarangan karena sangat berbahaya!",svg:`<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><path d="M16 60 L42 24 L68 60" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><line x1="28" y1="44" x2="56" y2="44" stroke="white" stroke-width="3"/><line x1="16" y1="60" x2="68" y2="60" stroke="white" stroke-width="3"/></svg>`}
+];
+
+function openModal(idx) {
+  const d = rambuData[idx];
+  const overlay = document.getElementById('modalOverlay');
+  const typeColors = {
+    peringatan: {bg:'rgba(255,214,0,.15)',color:'#C9A800',label:'⚠️ Peringatan'},
+    larangan: {bg:'rgba(229,62,62,.1)',color:'#C53030',label:'🚫 Larangan'},
+    perintah: {bg:'rgba(42,82,152,.1)',color:'#2A5298',label:'✅ Perintah'},
+    informasi: {bg:'rgba(0,200,150,.1)',color:'#009E78',label:'ℹ️ Informasi'}
+  };
+  const tc = typeColors[d.type];
+  document.getElementById('modalType').innerHTML = `<span class="modal-type" style="background:${tc.bg};color:${tc.color};">${tc.label}</span>`;
+  document.getElementById('modalSvg').innerHTML = d.svg;
+  document.getElementById('modalName').textContent = d.name;
+  document.getElementById('modalDesc').textContent = d.desc;
+  document.getElementById('modalFact').innerHTML = d.fact;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function filterRambu(type, btn) {
+  const cards = document.querySelectorAll('.rambu-card');
+  cards.forEach(c => {
+    if (type === 'semua' || c.dataset.type === type) c.classList.remove('hidden');
+    else c.classList.add('hidden');
+  });
+  if (btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+</script>
+</body>
+</html>

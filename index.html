@@ -73,18 +73,23 @@ section{padding:80px 5%;}
 
 /* PILLARS */
 .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:44px;}
-.pillar{background:var(--putih-pure);border-radius:var(--r-lg);padding:34px 26px;border:2px solid var(--abu);transition:var(--ease);position:relative;overflow:hidden;}
+.pillar{background:var(--putih-pure);border-radius:var(--r-lg);padding:34px 26px;border:2px solid var(--abu);transition:var(--ease);position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;cursor:pointer;}
 .pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
 .pillar:nth-child(1)::before{background:var(--kuning);}
 .pillar:nth-child(2)::before{background:var(--hijau);}
 .pillar:nth-child(3)::before{background:var(--oranye);}
 .pillar:hover{border-color:transparent;box-shadow:0 10px 36px rgba(27,58,107,.16);transform:translateY(-4px);}
+.pillar:hover .pillar-cta{opacity:1;transform:translateX(0);}
 .pillar h3{margin:16px 0 10px;}
 .pillar p{color:#5A6B8A;font-size:.93rem;}
 .ptag{display:inline-block;margin-top:18px;padding:4px 14px;border-radius:100px;font-size:.78rem;font-weight:600;}
 .t-y{background:rgba(255,214,0,.15);color:var(--kuning-dark);}
 .t-g{background:rgba(0,200,150,.12);color:var(--hijau-dark);}
 .t-o{background:rgba(255,107,53,.12);color:var(--oranye-dark);}
+.pillar-cta{display:block;margin-top:16px;font-size:.82rem;font-weight:700;opacity:0;transform:translateX(-6px);transition:var(--ease);}
+.pillar:nth-child(1) .pillar-cta{color:var(--kuning-dark);}
+.pillar:nth-child(2) .pillar-cta{color:var(--hijau-dark);}
+.pillar:nth-child(3) .pillar-cta{color:var(--oranye-dark);}
 
 /* DARK FEATURES */
 .dark-sec{background:var(--aspal);padding:80px 5%;}
@@ -256,7 +261,7 @@ footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:44px 5% 28px;
     <p style="margin-top:14px;color:#5A6B8A;">Mengintegrasikan media digital dan non-digital dalam satu pengalaman belajar yang menyenangkan sesuai Kurikulum Merdeka Fase B.</p>
   </div>
   <div class="pillars">
-    <div class="pillar">
+    <a class="pillar" href="kenali-rambu.html">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
         <circle cx="30" cy="30" r="27" fill="#FFF3C4"/>
         <polygon points="30,8 52,44 8,44" fill="none" stroke="#FFD600" stroke-width="2.5"/>
@@ -266,8 +271,9 @@ footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:44px 5% 28px;
       <h3>Kenali Rambu</h3>
       <p>Pelajari 20+ rambu lalu lintas lewat kartu visual interaktif, kuis bergambar, dan cerita bertema keselamatan jalan yang kontekstual.</p>
       <span class="ptag t-y">🎮 Gamifikasi Digital</span>
-    </div>
-    <div class="pillar">
+      <span class="pillar-cta">Jelajahi Rambu →</span>
+    </a>
+    <a class="pillar" href="tulis-argumenku.html">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
         <rect x="8" y="12" width="44" height="36" rx="7" fill="#D4F5EC"/>
         <rect x="14" y="20" width="32" height="3.5" rx="1.75" fill="#00C896"/>
@@ -280,8 +286,9 @@ footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:44px 5% 28px;
       <h3>Tulis Argumenku</h3>
       <p>Susun teks argumentasi dengan panduan kerangka interaktif, template kalimat, dan umpan balik berbasis awalan <em>ber-</em> yang tepat.</p>
       <span class="ptag t-g">✍️ Literasi Digital</span>
-    </div>
-    <div class="pillar">
+      <span class="pillar-cta">Mulai Menulis →</span>
+    </a>
+    <a class="pillar" href="board-game.html">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
         <rect x="5" y="5" width="50" height="50" rx="10" fill="#FFE4D9"/>
         <rect x="13" y="18" width="10" height="10" rx="3" fill="#FF6B35"/>
@@ -298,7 +305,8 @@ footer{background:var(--aspal);color:rgba(255,255,255,.55);padding:44px 5% 28px;
       <h3>Board Game Digital</h3>
       <p>Papan permainan fisik terhubung ke tantangan digital — media inovatif non-IT + IT yang mendorong kolaborasi dan berpikir kritis.</p>
       <span class="ptag t-o">🎲 Media Inovatif</span>
-    </div>
+      <span class="pillar-cta">Main Sekarang →</span>
+    </a>
   </div>
 </section>
 
