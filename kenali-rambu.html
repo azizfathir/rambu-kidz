@@ -958,53 +958,55 @@
       </div>
     </div>
 
-<div class="rambu-card" data-type="peringatan" onclick="openModal(10)">
-  <div class="rambu-svg">
-    <img src="images/simpang-kiri.png" width="60">
-  </div>
-  <div class="rambu-name">Simpang dari Kiri</div>
-  <span class="rambu-type type-peringatan">Peringatan</span>
-</div>
-
-
-<div class="rambu-card" data-type="larangan" onclick="openModal(11)">
-  <div class="rambu-svg">
-    <img src="images/dilarang-mobil.png" width="60">
-  </div>
-  <div class="rambu-name">Dilarang Kendaraan Mobil</div>
-  <span class="rambu-type type-larangan">Larangan</span>
-</div>
-
-<!-- Penyeberangan Pejalan Kaki -->
-<div class="rambu-card" data-type="informasi" onclick="openModal(12)">
-  <div class="rambu-svg">
-    <img src="images/penyeberangan.png" width="60">
-  </div>
-  <div class="rambu-name">Penyeberangan Pejalan Kaki</div>
-  <span class="rambu-type type-informasi">Informasi</span>
-</div>
-
-<!-- Petunjuk Arah -->
-<div class="rambu-card" data-type="informasi" onclick="openModal(13)">
-  <div class="rambu-svg">
-    <img src="images/petunjuk-arah.png" width="70">
-  </div>
-  <div class="rambu-name">Petunjuk Arah</div>
-  <span class="rambu-type type-informasi">Informasi</span>
-</div>
-
-<!-- Batas Kecepatan 50 -->
-<div class="rambu-card" data-type="perintah" onclick="openModal(14)">
-  <div class="rambu-svg">
-    <img src="images/batas50.png" width="60">
-  </div>
-  <div class="rambu-name">Batas Kecepatan 50 km/jam</div>
-  <span class="rambu-type type-perintah">Perintah</span>
-</div>
-
-    <div class="center">
-      <a href="index.html#kuis" class="btn btn-primary">🎯 Coba Kuis Rambu</a>
+    <div class="rambu-card" data-type="peringatan" onclick="openModal(10)">
+        <div class="rambu-svg">
+            <img src="images/simpang-kiri.png" alt="Simpang dari Kiri"
+                style="width:80px;height:80px;object-fit:contain;">
+        </div>
+        <div class="rambu-name">Simpang dari Kiri</div>
+        <span class="rambu-type type-peringatan">Peringatan</span>
     </div>
+
+
+  <div class="rambu-card" data-type="larangan" onclick="openModal(11)">
+      <div class="rambu-svg">
+          <img src="images/dilarang-mobil.png" alt="Dilarang Kendaraan Mobil"
+              style="width:80px;height:80px;object-fit:contain;">
+      </div>
+      <div class="rambu-name">Dilarang Kendaraan Mobil</div>
+      <span class="rambu-type type-larangan">Larangan</span>
+  </div>
+
+  <div class="rambu-card" data-type="informasi" onclick="openModal(12)">
+      <div class="rambu-svg">
+          <img src="images/penyeberangan.png" alt="Penyeberangan"
+              style="width:80px;height:80px;object-fit:contain;">
+      </div>
+      <div class="rambu-name">Penyeberangan Pejalan Kaki</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+  </div>
+
+  <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
+      <div class="rambu-svg">
+          <img src="images/petunjuk-arah.png" alt="Petunjuk Arah"
+              style="width:80px;height:80px;object-fit:contain;">
+      </div>
+      <div class="rambu-name">Petunjuk Arah</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+  </div>
+
+  <div class="rambu-card" data-type="perintah" onclick="openModal(14)">
+      <div class="rambu-svg">
+          <img src="images/batas50.png" alt="Batas Kecepatan 50"
+              style="width:80px;height:80px;object-fit:contain;">
+      </div>
+      <div class="rambu-name">Batas Kecepatan 50 km/jam</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+  </div>
+
+      <div class="center">
+        <a href="index.html#kuis" class="btn btn-primary">🎯 Coba Kuis Rambu</a>
+      </div>
   </section>
 
   <!-- TIPS BELAJAR -->
@@ -1061,36 +1063,56 @@
       // Peringatan
       { name: "Bahaya Umum", 
       type: "peringatan", 
-      desc: "Rambu berbentuk segitiga kuning dengan tanda seru merah. Ditempatkan di lokasi yang memiliki potensi bahaya yang tidak spesifik.", fact: "<strong>Fakta Menarik:</strong> Warna kuning dipilih karena paling mudah terlihat oleh mata manusia bahkan dalam kondisi hujan atau berkabut!", svg: `<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><text x="45" y="66" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="30" fill="#E53E3E">!</text></svg>` },
+      desc: "Rambu berbentuk segitiga kuning dengan tanda seru merah. Ditempatkan di lokasi yang memiliki potensi bahaya yang tidak spesifik.", 
+      fact: "<strong>Fakta Menarik:</strong> Warna kuning dipilih karena paling mudah terlihat oleh mata manusia bahkan dalam kondisi hujan atau berkabut!", 
+      svg: `<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><text x="45" y="66" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="30" fill="#E53E3E">!</text></svg>` },
       // Larangan 
       { name: "Berhenti (STOP)", 
       type: "larangan", 
-      desc: "Rambu segi delapan merah dengan tulisan STOP. Ini adalah rambu paling tegas — semua kendaraan WAJIB berhenti penuh sebelum melanjutkan perjalanan.", fact: "<strong>Wajib Tahu:</strong> Rambu STOP berbentuk segi delapan agar bisa dikenali dari belakang bahkan ketika tertutup salju atau benda lain. Bentuknya unik di seluruh dunia!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><polygon points="24,4 60,4 80,24 80,60 60,80 24,80 4,60 4,24" fill="#E53E3E"/><polygon points="26,9 58,9 75,26 75,58 58,75 26,75 9,58 9,26" fill="none" stroke="white" stroke-width="2.5"/><text x="42" y="50" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="white">STOP</text></svg>` },
+      desc: "Rambu segi delapan merah dengan tulisan STOP. Ini adalah rambu paling tegas — semua kendaraan WAJIB berhenti penuh sebelum melanjutkan perjalanan.", 
+      fact: "<strong>Wajib Tahu:</strong> Rambu STOP berbentuk segi delapan agar bisa dikenali dari belakang bahkan ketika tertutup salju atau benda lain. Bentuknya unik di seluruh dunia!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><polygon points="24,4 60,4 80,24 80,60 60,80 24,80 4,60 4,24" fill="#E53E3E"/><polygon points="26,9 58,9 75,26 75,58 58,75 26,75 9,58 9,26" fill="none" stroke="white" stroke-width="2.5"/><text x="42" y="50" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="18" fill="white">STOP</text></svg>` },
       { name: "Dilarang Melintas", 
       type: "larangan", 
-      desc: "Lingkaran putih dengan garis horizontal merah tebal. Tidak ada kendaraan sama sekali yang boleh masuk ke jalan ini.", fact: "<strong>Fakta:</strong> Ini berbeda dengan 'Dilarang Masuk'. Dilarang melintas berarti jalan sudah penuh atau khusus untuk kendaraan tertentu saja!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="8"/><rect x="12" y="36" width="60" height="12" rx="6" fill="#E53E3E"/></svg>` },
+      desc: "Lingkaran putih dengan garis horizontal merah tebal. Tidak ada kendaraan sama sekali yang boleh masuk ke jalan ini.",
+      fact: "<strong>Fakta:</strong> Ini berbeda dengan 'Dilarang Masuk'. Dilarang melintas berarti jalan sudah penuh atau khusus untuk kendaraan tertentu saja!",
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="8"/><rect x="12" y="36" width="60" height="12" rx="6" fill="#E53E3E"/></svg>` },
       { name: "Dilarang Parkir", 
       type: "larangan", 
-      desc: "Lingkaran merah dengan huruf P besar dicoret. Kendaraan tidak boleh berhenti dalam jangka waktu lama untuk parkir di area ini.", fact: "<strong>Ingat:</strong> Ada perbedaan antara 'Dilarang Parkir' dan 'Dilarang Berhenti'. Dilarang Parkir masih boleh berhenti sebentar untuk menaikkan penumpang!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><text x="42" y="58" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="46" fill="#111">P</text><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
+      desc: "Lingkaran merah dengan huruf P besar dicoret. Kendaraan tidak boleh berhenti dalam jangka waktu lama untuk parkir di area ini.", 
+      fact: "<strong>Ingat:</strong> Ada perbedaan antara 'Dilarang Parkir' dan 'Dilarang Berhenti'. Dilarang Parkir masih boleh berhenti sebentar untuk menaikkan penumpang!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><text x="42" y="58" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="46" fill="#111">P</text><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
       { name: "Dilarang Putar Balik", 
       type: "larangan", 
-      desc: "Rambu lingkaran merah dengan simbol U-turn dicoret. Kendaraan tidak boleh melakukan putar balik di lokasi ini.", fact: "<strong>Alasan:</strong> Putar balik di sembarang tempat sangat berbahaya karena mengganggu arus lalu lintas dan berpotensi menyebabkan kecelakaan!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M28 64 L28 30 A14 14 0 0 1 56 30 L56 52" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="56,64 48,51 64,51" fill="#111"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
+      desc: "Rambu lingkaran merah dengan simbol U-turn dicoret. Kendaraan tidak boleh melakukan putar balik di lokasi ini.", 
+      fact: "<strong>Alasan:</strong> Putar balik di sembarang tempat sangat berbahaya karena mengganggu arus lalu lintas dan berpotensi menyebabkan kecelakaan!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M28 64 L28 30 A14 14 0 0 1 56 30 L56 52" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="56,64 48,51 64,51" fill="#111"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
       { name: "Dilarang Belok Kiri", 
       type: "larangan", 
-      desc: "Rambu lingkaran merah dengan simbol panah kiri dicoret. Kendaraan harus lurus atau belok ke arah lain, tidak boleh belok kiri.", fact: "<strong>Tips:</strong> Rambu ini sering dipasang di persimpangan dengan arus satu arah untuk mengatur lalu lintas agar tetap lancar dan aman!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M58 42 L30 42 M42 28 L28 42 L42 56" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
+      desc: "Rambu lingkaran merah dengan simbol panah kiri dicoret. Kendaraan harus lurus atau belok ke arah lain, tidak boleh belok kiri.", 
+      fact: "<strong>Tips:</strong> Rambu ini sering dipasang di persimpangan dengan arus satu arah untuk mengatur lalu lintas agar tetap lancar dan aman!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M58 42 L30 42 M42 28 L28 42 L42 56" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
       // Perintah 
       { name: "Wajib Lurus", 
       type: "perintah", 
-      desc: "Lingkaran biru dengan panah putih ke atas. Pengemudi WAJIB melaju lurus ke depan dan tidak boleh belok ke kiri atau kanan.", fact: "<strong>Fakta:</strong> Rambu perintah berwarna biru untuk membedakannya dari rambu larangan. Biru = informasi/perintah, Merah = larangan!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><circle cx="42" cy="42" r="32" fill="none" stroke="white" stroke-width="1.5" stroke-opacity=".3"/><polygon points="42,16 52,32 46,32 46,62 38,62 38,32 32,32" fill="white"/></svg>` },
+      desc: "Lingkaran biru dengan panah putih ke atas. Pengemudi WAJIB melaju lurus ke depan dan tidak boleh belok ke kiri atau kanan.", 
+      fact: "<strong>Fakta:</strong> Rambu perintah berwarna biru untuk membedakannya dari rambu larangan. Biru = informasi/perintah, Merah = larangan!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><circle cx="42" cy="42" r="32" fill="none" stroke="white" stroke-width="1.5" stroke-opacity=".3"/><polygon points="42,16 52,32 46,32 46,62 38,62 38,32 32,32" fill="white"/></svg>` },
       { name: "Wajib Belok Kanan", 
       type: "perintah", 
-      desc: "Lingkaran biru dengan panah putih ke kanan. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kanan.", fact: "<strong>Ingat:</strong> Rambu perintah bersifat WAJIB diikuti. Melanggarnya bukan hanya berbahaya tapi juga melanggar hukum lalu lintas!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="64,42 50,32 50,36 22,36 22,48 50,48 50,52" fill="white"/></svg>` },
+      desc: "Lingkaran biru dengan panah putih ke kanan. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kanan.", 
+      fact: "<strong>Ingat:</strong> Rambu perintah bersifat WAJIB diikuti. Melanggarnya bukan hanya berbahaya tapi juga melanggar hukum lalu lintas!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="64,42 50,32 50,36 22,36 22,48 50,48 50,52" fill="white"/></svg>` },
       { name: "Wajib Belok Kiri", 
       type: "perintah", 
-      desc: "Lingkaran biru dengan panah putih ke kiri. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kiri.", fact: "<strong>Fungsi:</strong> Rambu ini biasanya dipasang di persimpangan untuk mengatur arus lalu lintas agar tidak terjadi kemacetan atau kecelakaan!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="20,42 34,32 34,36 62,36 62,48 34,48 34,52" fill="white"/></svg>` },
+      desc: "Lingkaran biru dengan panah putih ke kiri. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kiri.", 
+      fact: "<strong>Fungsi:</strong> Rambu ini biasanya dipasang di persimpangan untuk mengatur arus lalu lintas agar tidak terjadi kemacetan atau kecelakaan!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="20,42 34,32 34,36 62,36 62,48 34,48 34,52" fill="white"/></svg>` },
       { name: "Batas Kecepatan", 
       type: "perintah", 
-      desc: "Lingkaran biru dengan angka menunjukkan batas kecepatan maksimum yang diperbolehkan di ruas jalan tersebut.", fact: "<strong>Fakta Hukum:</strong> Batas kecepatan di jalan lingkungan permukiman adalah 30 km/jam, jalan dalam kota 50 km/jam, dan jalan tol 100 km/jam!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><text x="42" y="52" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">30</text><text x="42" y="28" text-anchor="middle" font-family="Nunito" font-size="12" fill="rgba(255,255,255,.6)">km/jam</text></svg>` },
+      desc: "Lingkaran biru dengan angka menunjukkan batas kecepatan maksimum yang diperbolehkan di ruas jalan tersebut.",
+       fact: "<strong>Fakta Hukum:</strong> Batas kecepatan di jalan lingkungan permukiman adalah 30 km/jam, jalan dalam kota 50 km/jam, dan jalan tol 100 km/jam!", 
+       svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><text x="42" y="52" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">30</text><text x="42" y="28" text-anchor="middle" font-family="Nunito" font-size="12" fill="rgba(255,255,255,.6)">km/jam</text></svg>` },
       // Informasi
       { name: "Petunjuk Arah", 
       type: "informasi",
@@ -1099,16 +1121,24 @@
        svg: `<svg width="100" height="70" viewBox="0 0 100 70" fill="none"><rect x="4" y="4" width="92" height="62" rx="8" fill="#1B3A6B"/><rect x="8" y="8" width="84" height="54" rx="6" fill="none" stroke="white" stroke-width="1" stroke-opacity=".3"/><polygon points="50,18 70,35 50,52 30,35" fill="white"/></svg>` },
       { name: "Tempat Parkir", 
       type: "informasi", 
-      desc: "Rambu persegi biru dengan huruf P putih besar. Menunjukkan bahwa di area tersebut tersedia fasilitas parkir untuk kendaraan.", fact: "<strong>Tips Berkendara:</strong> Selalu cari rambu parkir sebelum memarkir kendaraan sembarangan. Parkir liar bisa kena tilang dan menggangu lalu lintas!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#2A5298"/><text x="42" y="56" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="40" fill="white">P</text></svg>` },
+      desc: "Rambu persegi biru dengan huruf P putih besar. Menunjukkan bahwa di area tersebut tersedia fasilitas parkir untuk kendaraan.", 
+      fact: "<strong>Tips Berkendara:</strong> Selalu cari rambu parkir sebelum memarkir kendaraan sembarangan. Parkir liar bisa kena tilang dan menggangu lalu lintas!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#2A5298"/><text x="42" y="56" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="40" fill="white">P</text></svg>` },
       { name: "Pusat Informasi", 
       type: "informasi", 
-      desc: "Rambu biru dengan huruf 'i' menunjukkan lokasi pusat informasi atau tempat wisatawan bisa mendapatkan bantuan dan informasi.", fact: "<strong>Fungsi:</strong> Di pusat informasi, kamu bisa mendapatkan peta, jadwal transportasi, dan bantuan perjalanan secara gratis!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><circle cx="42" cy="32" r="12" fill="white"/><text x="42" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="14" fill="#1B3A6B">i</text><rect x="30" y="50" width="24" height="4" rx="2" fill="white" fill-opacity=".8"/><rect x="34" y="60" width="16" height="3" rx="1.5" fill="white" fill-opacity=".5"/></svg>` },
+      desc: "Rambu biru dengan huruf 'i' menunjukkan lokasi pusat informasi atau tempat wisatawan bisa mendapatkan bantuan dan informasi.", 
+      fact: "<strong>Fungsi:</strong> Di pusat informasi, kamu bisa mendapatkan peta, jadwal transportasi, dan bantuan perjalanan secara gratis!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><circle cx="42" cy="32" r="12" fill="white"/><text x="42" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="14" fill="#1B3A6B">i</text><rect x="30" y="50" width="24" height="4" rx="2" fill="white" fill-opacity=".8"/><rect x="34" y="60" width="16" height="3" rx="1.5" fill="white" fill-opacity=".5"/></svg>` },
       { name: "Rumah Sakit", 
       type: "informasi", 
-      desc: "Rambu hijau atau biru dengan simbol palang merah atau tulisan RS. Menunjukkan arah atau lokasi fasilitas kesehatan terdekat.", fact: "<strong>Darurat:</strong> Rambu RS sangat penting dalam keadaan darurat medis. Hafal lokasinya sejak dini agar kamu bisa membantu orang yang membutuhkan!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#009E78"/><rect x="30" y="22" width="24" height="40" rx="4" fill="white"/><rect x="20" y="32" width="44" height="20" rx="4" fill="white"/></svg>` },
+      desc: "Rambu hijau atau biru dengan simbol palang merah atau tulisan RS. Menunjukkan arah atau lokasi fasilitas kesehatan terdekat.", 
+      fact: "<strong>Darurat:</strong> Rambu RS sangat penting dalam keadaan darurat medis. Hafal lokasinya sejak dini agar kamu bisa membantu orang yang membutuhkan!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#009E78"/><rect x="30" y="22" width="24" height="40" rx="4" fill="white"/><rect x="20" y="32" width="44" height="20" rx="4" fill="white"/></svg>` },
       { name: "Jembatan Penyeberangan", 
       type: "informasi", 
-      desc: "Rambu yang menunjukkan lokasi jembatan penyeberangan orang (JPO). Mengarahkan pejalan kaki ke tempat menyeberang yang aman.", fact: "<strong>Keselamatan:</strong> Gunakan selalu jembatan penyeberangan atau zebra cross saat menyeberang jalan. Jangan menyeberang sembarangan karena sangat berbahaya!", svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><path d="M16 60 L42 24 L68 60" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><line x1="28" y1="44" x2="56" y2="44" stroke="white" stroke-width="3"/><line x1="16" y1="60" x2="68" y2="60" stroke="white" stroke-width="3"/></svg>` },
+      desc: "Rambu yang menunjukkan lokasi jembatan penyeberangan orang (JPO). Mengarahkan pejalan kaki ke tempat menyeberang yang aman.", 
+      fact: "<strong>Keselamatan:</strong> Gunakan selalu jembatan penyeberangan atau zebra cross saat menyeberang jalan. Jangan menyeberang sembarangan karena sangat berbahaya!", 
+      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><rect x="4" y="4" width="76" height="76" rx="12" fill="#1B3A6B"/><path d="M16 60 L42 24 L68 60" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><line x1="28" y1="44" x2="56" y2="44" stroke="white" stroke-width="3"/><line x1="16" y1="60" x2="68" y2="60" stroke="white" stroke-width="3"/></svg>` },
       { name: "Wajib Belok Kanan di Persimpangan", 
       type: "perintah", 
       desc: "Rambu berlian kuning dengan simbol bangunan dan panah ke kanan. Menunjukkan bahwa di persimpangan depan, kendaraan diwajibkan untuk belok ke kanan.", 
