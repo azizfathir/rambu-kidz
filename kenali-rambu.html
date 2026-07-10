@@ -988,6 +988,16 @@
   </div>
 
   <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
+    <div class="rambu-svg">
+        <img src="images/tempatparkir.png"
+            alt="Area Parkir"
+            style="width:60px;height:80px;object-fit:contain;">
+    </div>
+    <div class="rambu-name">Area Parkir</div>
+    <span class="rambu-type type-informasi">Informasi</span>
+</div>
+
+  <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
       <div class="rambu-svg">
           <img src="images/pejalankaki.png" alt="Penyeberangan"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -996,7 +1006,7 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-      <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
+      <div class="rambu-card" data-type="informasi" onclick="openModal(15)">
       <div class="rambu-svg">
           <img src="images/belok-kiri.png"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -1005,7 +1015,7 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(15)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(16)">
       <div class="rambu-svg">
           <img src="images/petunjuk-arah.png" alt="Petunjuk Arah"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -1160,9 +1170,16 @@
       desc: "Rambu ini menunjukkan bahwa kendaraan tidak boleh melaju melebihi kecepatan 50 kilometer per jam.",
       fact: "<strong>Fakta:</strong> Mematuhi batas kecepatan membantu mengurangi risiko kecelakaan lalu lintas.",
       svg: `<img src="images/batas50.png" width="120">`
-       }, // Informasi
-
-    {
+       }, 
+       // Informasi
+        {
+          name: "Area Parkir",
+          type: "informasi",
+          desc: "Rambu ini menunjukkan adanya area atau tempat yang disediakan khusus untuk memarkir kendaraan dengan aman.",
+          fact: "<strong>Fakta:</strong> Rambu Area Parkir membantu pengendara menemukan lokasi parkir resmi sehingga tidak mengganggu arus lalu lintas dan menghindari parkir sembarangan.",
+          svg: `<img src="images/area-parkir.png" width="120">`
+        },
+      {
       name: "Penyeberangan Pejalan Kaki",
       type: "informasi",
       desc: "Rambu ini menunjukkan lokasi penyeberangan pejalan kaki sehingga pengemudi harus memberikan prioritas kepada pejalan kaki.",
