@@ -990,7 +990,16 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
+      <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
+      <div class="rambu-svg">
+          <img src="images/belok-kiri.png"
+              style="width: 60px;height:80px;object-fit:contain;">
+      </div>
+      <div class="rambu-name">Belok Kiri</div>
+      <span class="rambu-type type-informasi">Informasi</span>
+  </div>
+
+  <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
       <div class="rambu-svg">
           <img src="images/petunjuk-arah.png" alt="Petunjuk Arah"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -999,14 +1008,6 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-    <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
-      <div class="rambu-svg">
-          <img src="images/belok-kiri.png"
-              style="width: 60px;height:80px;object-fit:contain;">
-      </div>
-      <div class="rambu-name">Belok Kiri</div>
-      <span class="rambu-type type-informasi">Informasi</span>
-  </div>
 
       <div class="center">
         <a href="index.html#kuis" class="btn btn-primary">🎯 Coba Kuis Rambu</a>
@@ -1112,6 +1113,13 @@
       desc: "Rambu lingkaran merah dengan simbol panah kiri dicoret. Kendaraan harus lurus atau belok ke arah lain, tidak boleh belok kiri.", 
       fact: "<strong>Tips:</strong> Rambu ini sering dipasang di persimpangan dengan arus satu arah untuk mengatur lalu lintas agar tetap lancar dan aman!", 
       svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M58 42 L30 42 M42 28 L28 42 L42 56" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
+      {
+      name: "Dilarang Kendaraan Mobil",
+      type: "larangan",
+      desc: "Rambu ini menunjukkan bahwa kendaraan mobil tidak diperbolehkan melewati jalan tersebut.",
+      fact: "<strong>Fakta:</strong> Biasanya dipasang pada jalan khusus kendaraan tertentu, kawasan wisata, atau area yang memiliki pembatasan kendaraan roda empat.",
+      svg: `<img src="images/laranganmobil.png" width="120">`
+       },
       // Perintah 
       { 
         name: "Wajib Lurus", 
@@ -1140,20 +1148,19 @@
       svg: `<img src="images/batas50.png" width="120">`
        }, // Informasi
 
-      {
-      name: "Dilarang Kendaraan Mobil",
-      type: "larangan",
-      desc: "Rambu ini menunjukkan bahwa kendaraan mobil tidak diperbolehkan melewati jalan tersebut.",
-      fact: "<strong>Fakta:</strong> Biasanya dipasang pada jalan khusus kendaraan tertentu, kawasan wisata, atau area yang memiliki pembatasan kendaraan roda empat.",
-      svg: `<img src="images/laranganmobil.png" width="120">`
-    },
-
     {
       name: "Penyeberangan Pejalan Kaki",
       type: "informasi",
       desc: "Rambu ini menunjukkan lokasi penyeberangan pejalan kaki sehingga pengemudi harus memberikan prioritas kepada pejalan kaki.",
       fact: "<strong>Fakta:</strong> Saat mendekati rambu ini, pengemudi wajib memperlambat kendaraan dan mendahulukan pejalan kaki yang akan menyeberang.",
       svg: `<img src="images/pejalankaki.png" width="120">`
+    },
+        {
+    name: "Belok Kiri",
+    type: "informasi",
+    desc: "Rambu ini menunjukkan adanya arah belok ke kiri pada jalur yang ditunjukkan.",
+    fact: "<strong>Fakta:</strong> Rambu ini merupakan rambu petunjuk yang membantu pengendara mengetahui arah jalan.",
+    svg: `<img src="images/belok-kiri.png" width="120">`
     },
 
     {
@@ -1162,15 +1169,9 @@
       desc: "Rambu petunjuk arah memberikan informasi tujuan perjalanan dan arah menuju kota atau lokasi tertentu.",
       fact: "<strong>Fakta:</strong> Rambu berwarna hijau digunakan sebagai petunjuk arah pada jalan utama maupun jalan nasional.",
       svg: `<img src="images/petunjuk-arah.png" width="140">`
-    },
-
-    {
-    name: "Belok Kiri",
-    type: "informasi",
-    desc: "Rambu ini menunjukkan adanya arah belok ke kiri pada jalur yang ditunjukkan.",
-    fact: "<strong>Fakta:</strong> Rambu ini merupakan rambu petunjuk yang membantu pengendara mengetahui arah jalan.",
-    svg: `<img src="images/belok-kiri.png" width="120">`
     }
+
+
     ];
 
     function openModal(idx) {
