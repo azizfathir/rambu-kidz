@@ -954,15 +954,14 @@
         <span class="rambu-type type-perintah">Perintah</span>
       </div>
 
-      <div class="rambu-card" data-type="perintah" onclick="openModal(9)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="27" fill="#2A5298" /><text x="30" y="38" text-anchor="middle"
-              font-family="Nunito" font-weight="900" font-size="18" fill="white">30</text><text x="30" y="22"
-              text-anchor="middle" font-family="Nunito" font-size="9" fill="rgba(255,255,255,.6)">km/jam</text>
-          </svg></div>
-        <div class="rambu-name">Batas Kecepatan</div>
-        <span class="rambu-type type-perintah">Perintah</span>
+  <div class="rambu-card" data-type="perintah" onclick="openModal(9)">
+      <div class="rambu-svg">
+          <img src="images/batas50.png" alt="Batas Kecepatan 50"
+              style="width:80px;height:80px;object-fit:contain;">
       </div>
+      <div class="rambu-name">Batas Kecepatan 50 km/jam</div>
+      <span class="rambu-type type-perintah">Perintah</span>
+  </div>
     
 
     <div class="rambu-card" data-type="peringatan" onclick="openModal(10)">
@@ -1002,16 +1001,7 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-  <div class="rambu-card" data-type="perintah" onclick="openModal(14)">
-      <div class="rambu-svg">
-          <img src="images/batas50.png" alt="Batas Kecepatan 50"
-              style="width:80px;height:80px;object-fit:contain;">
-      </div>
-      <div class="rambu-name">Batas Kecepatan 50 km/jam</div>
-      <span class="rambu-type type-perintah">Perintah</span>
-  </div>
-
-    <div class="rambu-card" data-type="informasi" onclick="openModal(15)">
+    <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
       <div class="rambu-svg">
           <img src="images/belok-kiri.png"
               style="width:80px;height:80px;object-fit:contain;">
@@ -1067,7 +1057,7 @@
       <h3 id="modalName"></h3>
       <p class="modal-desc" id="modalDesc"></p>
       <div class="modal-fact" id="modalFact"></div>
-      <button class="modal-close" onclick="closeModalDirect()">✓ Mengerti!</button>
+      <button class="modal-close" onclick="closeModalDirect()">Mengerti!</button>
     </div>
   </div>
 
@@ -1136,13 +1126,14 @@
       desc: "Lingkaran biru dengan panah putih ke kiri. Semua kendaraan yang masuk ke jalan ini wajib berbelok ke kiri.", 
       fact: "<strong>Fungsi:</strong> Rambu ini biasanya dipasang di persimpangan untuk mengatur arus lalu lintas agar tidak terjadi kemacetan atau kecelakaan!", 
       svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><polygon points="20,42 34,32 34,36 62,36 62,48 34,48 34,52" fill="white"/></svg>` },
+    
       {
-      name: "Batas Kecepatan", 
-      type: "perintah", 
-      desc: "Lingkaran biru dengan angka menunjukkan batas kecepatan maksimum yang diperbolehkan di ruas jalan tersebut.",
-       fact: "<strong>Fakta Hukum:</strong> Batas kecepatan di jalan lingkungan permukiman adalah 30 km/jam, jalan dalam kota 50 km/jam, dan jalan tol 100 km/jam!", 
-       svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="#2A5298"/><text x="42" y="52" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="white">30</text><text x="42" y="28" text-anchor="middle" font-family="Nunito" font-size="12" fill="rgba(255,255,255,.6)">km/jam</text></svg>` },
-      // Informasi
+      name: "Batas Kecepatan Maksimum 50 km/jam",
+      type: "perintah",
+      desc: "Rambu ini menunjukkan bahwa kendaraan tidak boleh melaju melebihi kecepatan 50 kilometer per jam.",
+      fact: "<strong>Fakta:</strong> Mematuhi batas kecepatan membantu mengurangi risiko kecelakaan lalu lintas.",
+      svg: `<img src="images/batas50.png" width="120">`
+       }, // Informasi
       {
       name: "Simpang dari Kiri",
       type: "peringatan",
@@ -1174,13 +1165,6 @@
       svg: `<img src="images/petunjuk-arah.png" width="140">`
     },
 
-    {
-      name: "Batas Kecepatan Maksimum 50 km/jam",
-      type: "perintah",
-      desc: "Rambu ini menunjukkan bahwa kendaraan tidak boleh melaju melebihi kecepatan 50 kilometer per jam.",
-      fact: "<strong>Fakta:</strong> Mematuhi batas kecepatan membantu mengurangi risiko kecelakaan lalu lintas.",
-      svg: `<img src="images/batas50.png" width="120">`
-    },
     {
     name: "Belok Kiri",
     type: "informasi",
