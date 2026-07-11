@@ -961,10 +961,10 @@
       </div>
 
       <div class="rambu-card" data-type="perintah" onclick="openModal(10)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="27" fill="#2A5298" />
-            <polygon points="46,30 34,22 34,26 16,26 16,34 34,34 34,38" fill="white" />
-          </svg></div>
+      <div class="rambu-svg">
+          <img src="images/belokkanan.jpg" alt="belokkanan 30"
+              style="width: 60px;height:80px;object-fit:contain;">
+      </div>
         <div class="rambu-name">Wajib Belok Kanan</div>
         <span class="rambu-type type-perintah">Perintah</span>
       </div>
@@ -1029,6 +1029,24 @@
             style="width:60px;height:80px;object-fit:contain;">
     </div>
     <div class="rambu-name">Lampu Hijau Menyala</div>
+    <span class="rambu-type type-informasi">Informasi</span>
+</div>
+
+<div class="rambu-card" data-type="informasi" onclick="openModal(18)">
+    <div class="rambu-svg">
+        <img src="images/lampu-merah.png" alt="Lampu Merah Menyala"
+            style="width:60px;height:80px;object-fit:contain;">
+    </div>
+    <div class="rambu-name">Lampu Merah Menyala</div>
+    <span class="rambu-type type-informasi">Informasi</span>
+</div>
+
+<div class="rambu-card" data-type="informasi" onclick="openModal(19)">
+    <div class="rambu-svg">
+        <img src="images/lampu-kuning.png" alt="Lampu Kuning Menyala"
+            style="width:60px;height:80px;object-fit:contain;">
+    </div>
+    <div class="rambu-name">Lampu Kuning Menyala</div>
     <span class="rambu-type type-informasi">Informasi</span>
 </div>
 </div>
@@ -1216,6 +1234,20 @@
   fact: "<strong>Fakta:</strong> Lampu hijau menyala pengemudi dapat tetap melintas, namun harus memastikan persimpangan aman dan mendahulukan pejalan kaki yang masih menyeberang.",
   svg: '<img src="images/lampuhijau.png" width="120">'
   },
+  {
+  name: "Lampu Merah Menyala",
+  type: "informasi",
+  desc: "Lampu lalu lintas berwarna merah menandakan semua kendaraan wajib berhenti sebelum garis henti atau zebra cross.",
+  fact: "<strong>Fakta:</strong> Menerobos lampu merah merupakan pelanggaran lalu lintas yang berisiko tinggi menyebabkan kecelakaan di persimpangan.",
+  svg: '<img src="images/lampu-merah.png" width="120">'
+},
+{
+  name: "Lampu Kuning Menyala",
+  type: "informasi",
+  desc: "Lampu lalu lintas berwarna kuning menandakan kendaraan harus bersiap berhenti karena lampu akan berubah menjadi merah atau berhati-hati sebelum melanjutkan perjalanan.",
+  fact: "<strong>Fakta:</strong> Lampu kuning bukan berarti pengemudi boleh menambah kecepatan. Pengemudi harus mengurangi kecepatan dan berhenti jika masih memungkinkan dilakukan dengan aman.",
+  svg: '<img src="images/lampu-kuning.png" width="120">'
+}
 
 
     ];
