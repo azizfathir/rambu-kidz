@@ -980,10 +980,10 @@
 
   <div class="rambu-card" data-type="perintah" onclick="openModal(12)">
       <div class="rambu-svg">
-          <img src="images/batas50.png" alt="Batas Kecepatan 50"
+          <img src="images/batas30.jpg" alt="Batas Kecepatan 30"
               style="width: 60px;height:80px;object-fit:contain;">
       </div>
-      <div class="rambu-name">Batas Kecepatan 50 km/jam</div>
+      <div class="rambu-name">Batas Kecepatan 30 km/jam</div>
       <span class="rambu-type type-perintah">Perintah</span>
   </div>
 
@@ -1023,6 +1023,14 @@
       <div class="rambu-name">Petunjuk Arah</div>
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
+  <div class="rambu-card" data-type="informasi" onclick="openModal(17)">
+    <div class="rambu-svg">
+        <img src="images/lampuhijau.png" alt="Lampu Hijau Menyala"
+            style="width:60px;height:80px;object-fit:contain;">
+    </div>
+    <div class="rambu-name">Lampu Hijau Menyala</div>
+    <span class="rambu-type type-informasi">Informasi</span>
+</div>
 </div>
 
       <div class="center">
@@ -1200,7 +1208,14 @@
       desc: "Rambu petunjuk arah memberikan informasi tujuan perjalanan dan arah menuju kota atau lokasi tertentu.",
       fact: "<strong>Fakta:</strong> Rambu berwarna hijau digunakan sebagai petunjuk arah pada jalan utama maupun jalan nasional.",
       svg: `<img src="images/petunjuk-arah.png" width="140">`
-    }
+    },
+    {
+  name: "Lampu Hijau Menyala",
+  type: "informasi",
+  desc: "Lampu lalu lintas berwarna hijau menandakan kendaraan diperbolehkan melanjutkan perjalanan sesuai arah yang diizinkan, dengan tetap memperhatikan kondisi lalu lintas di sekitar.",
+  fact: "<strong>Fakta:</strong> Lampu hijau menyala pengemudi dapat tetap melintas, namun harus memastikan persimpangan aman dan mendahulukan pejalan kaki yang masih menyeberang.",
+  svg: '<img src="images/lampuhijau.png" width="120">'
+  },
 
 
     ];
