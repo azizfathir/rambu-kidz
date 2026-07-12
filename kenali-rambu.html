@@ -860,11 +860,10 @@
     <div class="rambu-grid" id="rambuGrid">
 
       <div class="rambu-card" data-type="peringatan" onclick="openModal(0)">
-        <div class="rambu-svg"><svg width="64" height="60" viewBox="0 0 64 60" fill="none">
-            <polygon points="32,4 60,56 4,56" fill="#FFD600" />
-            <polygon points="32,9 56,54 8,54" fill="none" stroke="#E53E3E" stroke-width="2.5" /><text x="32" y="46"
-              text-anchor="middle" font-family="Nunito" font-weight="900" font-size="22" fill="#E53E3E">!</text>
-          </svg></div>
+        <div class="rambu-svg">
+            <img src="images/bahaya-umum.png" alt="Bahaya Umum"
+                style="width:60px;height:80px;object-fit:contain;">
+        </div>
         <div class="rambu-name">Bahaya Umum</div>
         <span class="rambu-type type-peringatan">Peringatan</span>
       </div>
@@ -881,32 +880,28 @@
 
       <!-- Larangan -->
       <div class="rambu-card" data-type="larangan" onclick="openModal(2)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <polygon points="17,2 43,2 58,17 58,43 43,58 17,58 2,43 2,17" fill="#E53E3E" />
-            <polygon points="19,6 41,6 54,19 54,41 41,54 19,54 6,41 6,19" fill="none" stroke="white" stroke-width="2" />
-            <text x="30" y="37" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="13"
-              fill="white">STOP</text>
-          </svg></div>
+        <div class="rambu-svg">
+            <img src="images/WhatsApp Image 2026-07-10 at 23.18.36.jpeg" alt="Berhenti (STOP)"
+                style="width:60px;height:80px;object-fit:contain;">
+        </div>
         <div class="rambu-name">Berhenti (STOP)</div>
         <span class="rambu-type type-larangan">Larangan</span>
       </div>
 
       <div class="rambu-card" data-type="larangan" onclick="openModal(3)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="6" />
-            <rect x="8" y="26" width="44" height="8" rx="4" fill="#E53E3E" />
-          </svg></div>
+      <div class="rambu-svg">
+          <img src="images/dilarang-melintas.png" alt="Dilarang Melintas"
+              style="width:60px;height:80px;object-fit:contain;">
+      </div>
         <div class="rambu-name">Dilarang Melintas</div>
         <span class="rambu-type type-larangan">Larangan</span>
       </div>
 
       <div class="rambu-card" data-type="larangan" onclick="openModal(4)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="5" />
-            <text x="30" y="42" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="32"
-              fill="#111">P</text>
-            <line x1="8" y1="8" x2="52" y2="52" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" />
-          </svg></div>
+        <div class="rambu-svg">
+            <img src="images/dilarang-parkir.png" alt="Dilarang Parkir"
+                style="width:60px;height:80px;object-fit:contain;">
+        </div>
         <div class="rambu-name">Dilarang Parkir</div>
         <span class="rambu-type type-larangan">Larangan</span>
       </div>
@@ -929,18 +924,7 @@
       <span class="rambu-type type-larangan">Larangan</span>
       </div> -->
 
-      <div class="rambu-card" data-type="larangan" onclick="openModal(6)">
-        <div class="rambu-svg"><svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="27" fill="white" stroke="#E53E3E" stroke-width="5" />
-            <path d="M42 30 L18 30 M30 18 L18 30 L30 42" fill="none" stroke="#E53E3E" stroke-width="4"
-              stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="8" y1="8" x2="52" y2="52" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" />
-          </svg></div>
-        <div class="rambu-name">Dilarang Belok Kiri</div>
-        <span class="rambu-type type-larangan">Larangan</span>
-      </div>
-
-        <div class="rambu-card" data-type="larangan" onclick="openModal(7)">
+        <div class="rambu-card" data-type="larangan" onclick="openModal(6)">
       <div class="rambu-svg">
           <img src="images/laranganmobil.png" alt="Dilarang Kendaraan Mobil"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -950,7 +934,7 @@
   </div>
 
       <!-- Perintah -->
-      <div class="rambu-card" data-type="perintah" onclick="openModal(8)">
+      <div class="rambu-card" data-type="perintah" onclick="openModal(7)">
       <div class="rambu-svg">
           <img src="images/belokkanan.jpg" alt="belokkanan 30"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -959,7 +943,7 @@
         <span class="rambu-type type-perintah">Perintah</span>
       </div>
 
-      <div class="rambu-card" data-type="perintah" onclick="openModal(9)">
+      <div class="rambu-card" data-type="perintah" onclick="openModal(8)">
       <div class="rambu-svg">
           <img src="images/belok-kiri.png" alt="Belok Kiri"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -968,7 +952,7 @@
         <span class="rambu-type type-perintah">Perintah</span>
       </div>
 
-  <div class="rambu-card" data-type="perintah" onclick="openModal(10)">
+  <div class="rambu-card" data-type="perintah" onclick="openModal(9)">
       <div class="rambu-svg">
           <img src="images/batas30.png" alt="Batas Kecepatan 30"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -977,7 +961,7 @@
       <span class="rambu-type type-perintah">Perintah</span>
   </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(11)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(10)">
     <div class="rambu-svg">
         <img src="images/tempatparkir.png"
             alt="Area Parkir"
@@ -987,7 +971,7 @@
     <span class="rambu-type type-informasi">Informasi</span>
 </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(12)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(11)">
       <div class="rambu-svg">
           <img src="images/pejalankaki.png" alt="Penyeberangan"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -996,7 +980,7 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(12)">
       <div class="rambu-svg">
           <img src="images/petunjuk-arah.png" alt="Petunjuk Arah"
               style="width: 60px;height:80px;object-fit:contain;">
@@ -1005,7 +989,7 @@
       <span class="rambu-type type-informasi">Informasi</span>
   </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(14)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(13)">
     <div class="rambu-svg">
         <img src="images/lampu-merah.png" alt="Lampu Merah Menyala"
             style="width:60px;height:80px;object-fit:contain;">
@@ -1014,7 +998,7 @@
     <span class="rambu-type type-informasi">Informasi</span>
 </div>
 
-<div class="rambu-card" data-type="informasi" onclick="openModal(15)">
+<div class="rambu-card" data-type="informasi" onclick="openModal(14)">
     <div class="rambu-svg">
         <img src="images/lampu-kuning.png" alt="Lampu Kuning Menyala"
             style="width:60px;height:80px;object-fit:contain;">
@@ -1023,7 +1007,7 @@
     <span class="rambu-type type-informasi">Informasi</span>
 </div>
 
-  <div class="rambu-card" data-type="informasi" onclick="openModal(16)">
+  <div class="rambu-card" data-type="informasi" onclick="openModal(15)">
     <div class="rambu-svg">
         <img src="images/lampuhijau.png" alt="Lampu Hijau Menyala"
             style="width:60px;height:80px;object-fit:contain;">
@@ -1097,7 +1081,7 @@
       type: "peringatan", 
       desc: "Rambu berbentuk segitiga kuning dengan tanda seru merah. Ditempatkan di lokasi yang memiliki potensi bahaya yang tidak spesifik.", 
       fact: "<strong>Fakta Menarik:</strong> Warna kuning dipilih karena paling mudah terlihat oleh mata manusia bahkan dalam kondisi hujan atau berkabut!", 
-      svg: `<svg width="90" height="84" viewBox="0 0 90 84" fill="none"><polygon points="45,5 83,78 7,78" fill="#FFD600"/><polygon points="45,11 78,76 12,76" fill="none" stroke="#E53E3E" stroke-width="3"/><text x="45" y="66" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="30" fill="#E53E3E">!</text></svg>` 
+      svg: `<img src="images/bahaya-umum.png" width="120">`
       },
       {
       name: "Rambu Peringatan Persimpangan Tiga Berganda Sisi Kiri dan Kanan",
@@ -1140,12 +1124,6 @@
       // fact: "<strong>Alasan:</strong> Putar balik di sembarang tempat sangat berbahaya karena mengganggu arus lalu lintas dan berpotensi menyebabkan kecelakaan!",
       // svg: '<img src="images/putarbalikkiri.png" width="120">'
       // },
-      { 
-        name: "Dilarang Belok Kiri", 
-      type: "larangan", 
-      desc: "Rambu lingkaran merah dengan simbol panah kiri dicoret. Kendaraan harus lurus atau belok ke arah lain, tidak boleh belok kiri.", 
-      fact: "<strong>Tips:</strong> Rambu ini sering dipasang di persimpangan dengan arus satu arah untuk mengatur lalu lintas agar tetap lancar dan aman!", 
-      svg: `<svg width="84" height="84" viewBox="0 0 84 84" fill="none"><circle cx="42" cy="42" r="38" fill="white" stroke="#E53E3E" stroke-width="7"/><path d="M58 42 L30 42 M42 28 L28 42 L42 56" fill="none" stroke="#E53E3E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="14" x2="70" y2="70" stroke="#E53E3E" stroke-width="7" stroke-linecap="round"/></svg>` },
       {
       name: "Dilarang Kendaraan Mobil",
       type: "larangan",
